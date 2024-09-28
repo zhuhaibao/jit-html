@@ -1,0 +1,68 @@
+@import url("base.css");
+
+.form-div {
+    padding: 40px 20px;
+    background-color: white;
+    width: 50%;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.2);
+}
+
+.form-div::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+input {
+    display: inline-block;
+    width: 100%;
+    padding: 15px 20px;
+    margin: 15px 0;
+    box-sizing: border-box;
+    border: 1px solid grey;
+    font-size: 16px;
+    border-radius: 2px;
+    background-color: white;
+
+}
+
+input:hover {
+    border-color: seagreen;
+    background-color: #eFEFEF;
+
+}
+
+.loginButton {
+    float: right;
+    width: 100px;
+    padding: 10px 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.2);
+    transition: all 0.4s;
+}
+
+.loginButton:hover {
+    background-color: #eFEFEF;
+    cursor: pointer;
+    box-shadow: 0px 10px 15px rgb(0, 0, 0, 0.5);
+}
+
+#passDiv {
+    position: relative;
+}
+#viewPass {
+    position: absolute;
+    right: 2px;
+    top: 25px;
+}
+#viewPass:hover {
+    cursor: pointer;
+}
+#viewPass:hover #eyeOuterline{
+    fill: #EFEFEF;
+}

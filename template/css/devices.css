@@ -1,0 +1,47 @@
+/*多设备支持*/
+    @media screen and (min-width:700px) and (max-width:960px){
+        /*整个内容区*/
+        .mainDiv {
+            width: 100%;
+        }
+        .titleTreeDiv {
+            display: block;
+        }
+        /*文章内容区*/
+        .contentDiv {
+            width: calc(100% - 260px);
+        }
+    }
+    @media screen and (max-width:700px){
+        /*整个内容区*/
+        .mainDiv {
+            width: 100%;
+            margin: 100px auto 0px auto;
+        }
+
+        /*标题树*/
+        .titleTreeDiv {
+            display: block;
+            top: 100px;
+            background-color: #ffffff;
+        }
+
+        /*标题树-供脚本切换*/
+        .titleTreeDiv700 {
+            display: none;
+        }
+
+        /*文章内容区*/
+        .contentDiv {
+            width: 100%;
+            margin-left: 0px;
+        }
+        /*标题树按钮*/
+        .treeBar{
+            display: block;
+        }
+        .treeBar:hover{
+            cursor: pointer;
+            background-color: #000000;
+        }
+    }

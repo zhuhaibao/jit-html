@@ -1,0 +1,364 @@
+/*引入fontawesome*/
+@import url('../js/lib/fontawesome-free-5.15.4-web/css/all.min.css');
+/*引入google字体*/
+@import url('https://fonts.googleapis.com/css2?family=Long+Cang&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap');
+
+.long-cang-regular {
+    font-family: "Long Cang", cursive;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.zcool-xiaowei-regular {
+    font-family: "ZCOOL XiaoWei", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+html * {
+    scroll-behavior: smooth;
+}
+
+body {
+    font: 14px/2.0 Helvetica, Verdana, Arial, sans-serif;
+}
+
+/*页面上部*/
+.topDiv {
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color: #ffffff;
+}
+
+/*页面上部-第一行*/
+.topBar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/*页面上部-第一行logo*/
+.logoDiv img {
+    width: 150px;
+}
+
+/*页面上部-第一行搜索框*/
+.topBar input {
+    width: 200px;
+    padding: 10px 40px 10px 10px;
+    border: 1px solid #cccccc;
+    border-radius: 20px;
+}
+
+/*页面上部-第一行用户显示*/
+.userInfoDiv {
+    margin-left: auto;
+    padding-right: 10px;
+}
+
+/*页面上部-第一行搜索框*/
+.searchDiv {
+    position: relative;
+    overflow: none;
+    margin-left: 10px;
+}
+
+.searchImg {
+    width: 33px;
+    height: 33px;
+    position: absolute;
+    cursor: pointer;
+    top: 2px;
+    right: 2px;
+}
+
+.searchImg:hover {
+    background-color: #cccccc;
+    border-radius: 25px;
+}
+
+/*页面上部-第二行导航*/
+.navBar {
+    position: relative;
+}
+
+.arrow {
+    height: 35px;
+    width: 35px;
+    background: url('../img/arrow.svg') no-repeat;
+    background-size: 80px 140px;
+    background-color: #282A35;
+}
+
+.arrow:hover {
+    cursor: pointer;
+    background-color: #000000;
+}
+
+#leftArrow {
+    z-index: 1;
+    position: absolute;
+    background-position: 0px -70px;
+}
+
+#rightArrow {
+    right: 0px;
+    top: 0px;
+    position: absolute;
+    background-position: 12px -28px;
+}
+
+/*文章按钮----start*/
+#articleLabel {
+    position: absolute;
+    height: 35px;
+    width: 80px;
+    left: 35px;
+    background-color: #282A35;
+    border-left: 1px dotted #afafaf;
+    border-right: 1px dotted #afafaf;
+}
+
+#articleLabel:hover {
+    background-color: #000000;
+}
+
+#articleLabel.selected {
+    background-color: #03AA6D;
+}
+
+/*文章按钮----end*/
+.navBar ul {
+    scroll-behavior: smooth;
+    height: 35px;
+    padding: 0;
+    margin: 0;
+    padding-left: 115px;
+    /*左边给固定定位的'文章'按钮留出的宽度*/
+    padding-right: 30px;
+    /*右边最后一个li离窗口30像素*/
+    background-color: #282A35;
+    overflow-x: scroll;
+    /*让其水平滚动*/
+    white-space: nowrap;
+    /*不换行*/
+}
+
+.navBar ul::-webkit-scrollbar {
+    /*消除滚动条 for chrome Safari and Opera */
+    display: none;
+}
+
+.navBar ul {
+    /*消除滚动条 for IE, Edge and Firefox*/
+    -ms-overflow-style: none;
+    scrollbar-width: 0;
+}
+
+.navBar li {
+    display: inline-block;
+    list-style: none;
+}
+
+.navBar li a {
+    font-size: 15px;
+    display: inline-block;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.navBar li:hover {
+    font-weight: bold;
+    background-color: #000000;
+}
+
+.navBar .selected,
+.navBar li.selected:hover {
+    background-color: #03AA6D;
+}
+
+/*主内容区域*/
+.mainDiv {
+    margin: 110px 0px 0px 0px;
+}
+
+
+/*弹出modal-通用窗口-start*/
+.modal {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow: auto;
+}
+
+.modalContent {
+    position: relative;
+    width: 70%;
+    height: 600px;
+    margin: 120px auto auto auto;
+    background-color: white;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5), 0px -6px 15px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+}
+
+.modalTitle {
+    position: sticky;
+}
+
+.close {
+    position: absolute;
+    font-size: 30px;
+    color: #444444;
+    font-weight: bold;
+    float: right;
+    top: -12px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #222222;
+}
+
+.modalBody {
+    height: 600px;
+    overflow: auto;
+}
+
+.modalFooter {
+    position: sticky;
+}
+
+/*弹出modal-通用窗口-end*/
+
+
+
+/*弹出的google搜索框---start*/
+.modalBody {
+    font-size: 13px;
+    line-height: 1.6;
+    padding: 20px 40px 20px 40px;
+}
+
+.googleSearchTitle {
+    padding: 20px 0px 0px 0px;
+}
+
+.resultAnalysis {
+    font-size: 14px;
+    color: #5c5c5c;
+}
+
+.hrsplit {
+    border-top: 1px solid #cccccc;
+}
+
+.gItem {
+    padding-bottom: 15px;
+}
+
+.gTitle {
+    color: #1657CA;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.gPath {
+    color: #02A83A;
+}
+
+.gInfo {
+    color: #343434;
+}
+
+.gPage {
+    padding-bottom: 10px;
+}
+
+.gPage a {
+    font-size: 14px;
+    color: #1c2b3c;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.gPage a:hover {
+    font-weight: bold;
+}
+
+.gBottom a {
+    display: inline-block;
+    text-decoration: none;
+    color: #1657CA;
+}
+
+.togoogle-enhance {
+    float: right;
+}
+
+/*弹出的google搜索框---end*/
+
+/*搜索结果的样式---start*/
+#searchResultDiv {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    width: 350px;
+    height: 450px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+    background-color: #FDFCFC;
+/*    transition: .5s allow-discrete;*/
+}
+
+#searchResultDiv a {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    padding: 10px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+#searchResultDiv a:first-child {
+    background-color: #efefef;
+}
+
+#searchResultDiv .keyword {
+    color: #E17E87;
+}
+
+#searchResultDiv a:hover {
+    font-weight: 800;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+/*搜索结果的样式---end*/
+
+/*标题树漂浮按钮*/
+.treeBar{
+    display: none;
+    position: absolute;
+    z-index: 2;/*盖过左按钮*/
+    height: 35px;
+    width: 35px;
+    font-size: 25px;
+    color: white;
+    background-color: #282A35;
+
+    box-sizing: border-box;
+    padding-top: 5px;
+    text-align: center;
+}

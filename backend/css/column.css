@@ -1,0 +1,99 @@
+body {
+    font: small/1.6em 微软雅黑, 楷体, 宋体, Verdana, Helvetica, Arial, sans-serif;
+    background-color: #F2F3F5;
+}
+
+/*body*/
+
+#header {
+    height: 55px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #FFFFFF;
+}
+
+#header nav {
+    display: inline-block;
+}
+
+#header nav ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+#header ul li {
+    display: inline-block;
+    font: large bold Verdana, Helvetica, Arial, sans-serif;
+    padding: 15px;
+
+}
+
+#logo {
+    height: 50px;
+    vertical-align: middle;
+}
+
+#userImg {
+    height: 50px;
+    vertical-align: middle;
+    margin-left: 100px;
+}
+
+.inputclass {
+    height: 30px;
+    padding: 1px;
+    text-align: center;
+    margin-left: 100px;
+}
+
+.buttonclass {
+    height: 30px;
+}
+
+/*导航*/
+
+#mainDiv {
+    display: table;
+    border-spacing: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    font: 16px/28px Verdana, Helvetica, Arial, sans-serif;
+    color: #252933;
+}
+
+#tableRow {
+    display: table-row;
+}
+
+#aside {
+    background-color: #FFFFFF;
+    display: table-cell;
+    width: 250px;
+    padding: 10px;
+}
+
+#article {
+    background-color: #FFFFFF;
+    display: table-cell;
+    width: 900px;
+    padding: 10px;
+}
+
+.userImg {
+    width: 30px;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+#article_comment_list article {
+    border-bottom: dotted #D4E3FD 2px;
+}
+.follow_comment {
+    margin-left: 50px;
+}
+
+/*页面内容*/
+
+footer {
+    text-align: center;
+}

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./js/lib/prism/prism.css">
+    <script src="./js/lib/prism/prism.js"></script>
+    <link rel="stylesheet" href="./js/lib/jodit/jodit.css">
+    <script src="./js/lib/jodit/jodit.js"></script>
+    <link rel="stylesheet" href="./js/lib/jodit/plugins/paste-code/paste-code.css">
+    <script src="./js/lib/jodit/plugins/paste-code/paste-code.js"></script>
+    <link rel="stylesheet" href="./js/lib/jodit/plugins/emoji/emoji.css">
+    <script src="./js/lib/jodit/plugins/emoji/emoji.js"></script>
+    <link rel="stylesheet" href="./js/lib/jodit/plugins/autocomplete/autocomplete.css">
+    <script src="./js/lib/jodit/plugins/autocomplete/autocomplete.js"></script>
+    <link rel="stylesheet" href="./js/lib/jodit/plugins/color-picker/color-picker.css">
+    <script src="./js/lib/jodit/plugins/color-picker/color-picker.js"></script>
+    <script src="./js/lib/jodit/plugins/google-search/google-search.js"></script>
+    <script src="js/base.js"></script>
+    <link rel="stylesheet" href="css/subject-article.css">
+    <title>主题-文章树列表</title>
+    <style type="text/css">
+    .articleMain {
+        display: flex;
+        flex-direction: row;
+        width: 80%;
+        min-height: calc(100vh - 100px);
+        box-sizing: border-box;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+    }
+
+    .articleNav {
+        padding: 40px 10px;
+        width: 20%;
+        background-color: white;
+        box-shadow: -5px 5px 10px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .articleNav ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    #titleTree ul {
+        position: relative;
+        margin-left: 5px
+    }
+
+    #titleTree ul:before {
+        content: "";
+        height: 100%;
+        position: absolute;
+        border-left: 1px dotted darkgrey;
+
+    }
+
+    #titleTree ul li {
+        padding: 10px 1em;
+        position: relative;
+
+    }
+
+    #titleTree ul li:before {
+        content: "";
+        position: absolute;
+        top: 1em;
+        left: 0px;
+        display: block;
+        border-top: 1px dotted darkgrey;
+        width: 15px;
+    }
+
+    .draggable {
+        display: inline-block;
+        padding: 5px;
+        background-color: #f6f6f6;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.18);
+    }
+
+    .draggable:hover {
+        background-color: #afafaf;
+        cursor: -webkit-grab;
+        cursor: grab;
+        font-weight: bold;
+        font-style: italic;
+        padding: 5px;
+    }
+
+    .selected {
+        background-color: #afafaf;
+        font-weight: bold;
+        font-style: italic;
+        padding: 5px;
+    }
+
+    .droppable {
+        border-bottom: 3px solid #5DB85D;
+    }
+
+    .articleEdit {
+        padding: 40px 20px;
+        width: 80%;
+        background-color: white;
+        margin-left: 5px;
+        box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    /*创建一个的div样式,这个样式会跟随者鼠标移动;它仅仅模拟li的形状,方便鼠标移动时的提示信息,div内容是选中的li的内容;*/
+    .fakeLi {
+        position: absolute;
+        display: none;
+        height: 20px;
+        overflow: auto;
+        padding: 5px 10px;
+        border: 1px solid #999999;
+        background-color: white;
+        cursor: -webkit-grab;
+        cursor: grab;
+    }
+
+    /*编辑标题节点时的输入框样式*/
+    .editButton {
+        width: 100%;
+        padding: 10px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        border: none;
+        outline: medium;
+        background-color: transparent;
+        font-size: 16px;
+        font-style: italic;
+        border-bottom: 1px solid green;
+    }
+
+    /*右键下拉编辑菜单-----start*/
+    .contextmenuDiv {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        z-index: 100;
+        left: 5px;
+        top: 45px;
+    }
+
+    .contextmenuTop {
+        border-top: none;
+        border-right: 180px solid transparent;
+        border-bottom: 20px solid palevioletred;
+        border-left: 20px solid transparent;
+    }
+
+    .contextmenuBody {
+        width: 200px;
+        max-height: 600px;
+        background-color: #efefef;
+        box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+        overflow: auto;
+    }
+
+    .contextmenuBody ul {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .contextmenuBody ul li {
+        list-style: none;
+        padding: 10px 15px;
+    }
+
+    .contextmenuBody ul li:hover {
+        background-color: #999999;
+    }
+
+    /*右键下拉编辑菜单-----end*/
+    </style>
+</head>
+
+<body>
+    <div class="sticky">
+        <header>
+            <nav>
+                <ul class="banner">
+                    <li><img src="img/logo.svg" class="logo"></li>
+                    <li class="bannerTitle"><a style="color: #03AA6D; font-weight: bold;" href="subject.html">主题管理</a></li>
+                    <li class="bannerTitle"><a href="articles.html">文章管理</a></li>
+                    <li class="bannerTitle"><a href="navigation.html">导航管理</a></li>
+                    <ul class="innerBanner">
+                        <li>朱海保</li>
+                        <li><a href="login.html">退出</a></li>
+                    </ul>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <div class="articleMain">
+        <div class="articleNav">
+            <ul id="titleTree">
+                <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">java基本知识</span>
+                    <ul>
+                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">数据类型int</span></li>
+                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">数据类型string的复杂应用以及特殊作用</span></li>
+                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">数据类型while</span></li>
+                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">数据类型for循环</span></li>
+                    </ul>
+                </li>
+                <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">其它</span>
+                    <ul>
+                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">111</span></li>
+                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">222</span></li>
+                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">333</span></li>
+                    </ul>
+                </li>
+                <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">java继承</span>
+                    <ul>
+                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">子类</span></li>
+                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">访问权限</span></li>
+                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">构造方法</span></li>
+                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">final类</span></li>
+                    </ul>
+                </li>
+                <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">java接口</span>
+                    <ul>
+                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">接口定义</span></li>
+                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">接口与继承</span></li>
+                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">接口默认方法</span></li>
+                    </ul>
+                </li>
+                <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">java Enum</span>
+                    <ul>
+                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">Enum定义</span></li>
+                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">Enum属性与方法</span></li>
+                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">EnumMap</span></li>
+                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">EnumSet</span></li>
+                    </ul>
+                </li>
+                <li><span class="draggable" onmousedown="titleLiDrag(event)">集合</span></li>
+            </ul>
+        </div>
+        <div class="articleEdit">
+            <div id='editArea'>
+                <textarea id="editor">
+                    <h1>Itaque nostrum est-quod nostrum dico, a<img src="http://localhost:8081/backend/img/test/pexels-kei-scampa-4507967.jpeg" alt="" width="293" style="float: right;" height="521">rtis est-ad ea principia, quae accepimus.</h1>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <em>Quonam, inquit, modo?</em> <mark>Illum mallem levares, quo optimum atque humanissimum virum, Cn.</mark> Quae quidem vel cum periculo est quaerenda vobis; Amicitiam autem adhibendam esse censent,
+    quia sit ex eo genere, quae prosunt. <a href="http://loripsum.net/" target="_blank">Duo Reges: constructio interrete.</a> Illud quaero, quid ei, qui in voluptate summum bonum ponat, consentaneum sit dicere. At vero illa, quae Peripatetici, quae Stoici
+    dicunt, semper tibi in ore sunt in iudiciis, in senatu. Dic in quovis conventu te omnia facere, ne doleas. Nummus in Croesi divitiis obscuratur, pars est tamen divitiarum. Isto modo ne improbos quidem, si essent boni viri. Luxuriam non reprehendit,
+    modo sit vacua infinita cupiditate et timore. Sit ista in Graecorum levitate perversitas, qui maledictis insectantur eos, a quibus de veritate dissentiunt. </p>
+
+<blockquote cite="http://loripsum.net">
+    Nec enim absolvi beata vita sapientis neque ad exitum perduci poterit, si prima quaeque bene ab eo consulta atque facta ipsius oblivione obruentur.
+</blockquote>
+
+
+<pre class="language-javascript">//计算鼠标和button的相对位置
+            let elemCoords = elem.getBoundingClientRect();
+            let shiftX = e.clientX - elemCoords.left;
+            let shiftY = e.clientY - elemCoords.top;
+            //把拖拽物变成绝对定位
+            elem.style.position = 'absolute';
+            elem.style.zIndex = 1000;
+            elem.style.margin = 0;
+
+            moveTo(e.pageX, e.pageY); //先移动一下,防止位置突然跳跃
+            //移动函数
+            function moveTo(pageX, pageY) {
+                elem.style.left = pageX - shiftX + 'px';
+                elem.style.top = pageY - shiftY + 'px';
+                movedPx += Math.abs(pageY - startPageY); //累计移动
+            }
+            //移动中的位置判断以及处理函数,e是注册监听器的第一个参数
+            function onMouseMove(e) {
+                moveTo(e.pageX, e.pageY);
+                if (movedPx &lt; 10) return; //上下移动小于10像素视为无效移动.
+
+                //有效移动
+                moved = true;
+                //先隐藏elem,不然下面看不到;同时判断下面的元素是否可放置
+                elem.hidden = true;
+                let elemBelow = document.elementFromPoint(e.clientX, e.clientY);
+                //获取下面的元素后,再显示
+                elem.hidden = false;
+                //如果获取不到元素,说明不在document内,忽略</pre>
+
+
+<ul>
+    <li>Possumusne ergo in vita summum bonum dicere, cum id ne in cena quidem posse videamur?</li>
+    <li>Quodsi vultum tibi, si incessum fingeres, quo gravior viderere, non esses tui similis;</li>
+</ul>
+
+
+<ol>
+    <li>Qui autem diffidet perpetuitati bonorum suorum, timeat necesse est, ne aliquando amissis illis sit miser.</li>
+    <li>Nulla profecto est, quin suam vim retineat a primo ad extremum.</li>
+</ol>
+
+
+<dl>
+    <dt><dfn>Falli igitur possumus.</dfn></dt>
+    <dd>Quid enim ab antiquis ex eo genere, quod ad disserendum valet, praetermissum est?</dd>
+    <dt><dfn>Scrupulum, inquam, abeunti;</dfn></dt>
+    <dd>Scio enim esse quosdam, qui quavis lingua philosophari possint;</dd>
+    <dt><dfn>Poterat autem inpune;</dfn></dt>
+    <dd>Tum ille: Tu autem cum ipse tantum librorum habeas, quos hic tandem requiris?</dd>
+    <dt><dfn>Beatum, inquit.</dfn></dt>
+    <dd>Respondeat totidem verbis.</dd>
+</dl>
+                </textarea>
+            </div>
+            <div style="text-align: center; margin-top: 10px;">
+                <a class="doButton" style="display: inline-block;" onclick="alert('保存文章')">保存</a>
+                <a class="doButton" style="display: inline-block;margin-left: 100px;" href='article-view.html'>预览</a>
+            </div>
+        </div>
+        <!--隐藏的下拉菜单-->
+        <div class="contextmenuDiv" id="contextmenuDiv" style="display: none;">
+            <div class='contextmenuTop'></div>
+            <div class="contextmenuBody">
+                <ul class="zcool-xiaowei-regular">
+                    <li id="delArticle" onclick="delArticle()">删除</li>
+                    <li id="updateArticleTitle" onclick="updateArticleTitle()">编辑标题</li>
+                    <li id="addArticle" onclick="addArticle()">添加子节点</li>
+                    <li id="addAncesterArticle" onclick="addAncesterArticle(1)">添加顶级节点</li>
+                </ul>
+            </div>
+        </div>
+        <!--隐藏的下拉菜单2-->
+        <div class="contextmenuDiv" style="display: none;" id="contextmenuDiv2">
+            <div class='contextmenuTop'></div>
+            <div class="contextmenuBody">
+                <ul class="zcool-xiaowei-regular">
+                    <li id="addAncesterArticle" onclick="addAncesterArticle(2)">添加顶级节点</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="fakeLi" id="fakeLi"></div>
+    <script type="text/javascript">
+    /*加载editor*/
+    let editorObj = loadJoditEditor("#editor");
+
+    let saved = false;
+    //编辑文章标题
+    function updateArticleTitle() {
+        contextmenuDiv.style.display = 'none';
+        let elemLi = contextmenuDiv.selectedLi;
+        let oldSpan = elemLi.firstElementChild; //保存旧的span
+        let oldValue = oldSpan.textContent;
+
+        let input = document.createElement('input');
+        input.className = 'editButton';
+        input.type = 'text';
+        input.name = 'title';
+        input.value = oldValue;
+
+        elemLi.firstElementChild.replaceWith(input);
+        elemLi.firstElementChild.focus();
+        //失去焦点时要提示保存
+        elemLi.firstElementChild.onblur = function(e) {
+            save(e);
+        }
+
+        function save(e) {
+            let newValue = e.currentTarget.value;
+            if (newValue != oldValue) {
+                let save = confirm("save updated title?")
+                if (save) {
+                    //此处调用后端服务保存
+                    oldSpan.innerHTML = newValue;
+                }
+            }
+            elemLi.firstElementChild.remove(); //清除input
+            elemLi.prepend(oldSpan); //改为span
+        }
+    }
+    //删除文章
+    function delArticle() {
+        contextmenuDiv.style.display = 'none';
+        if (contextmenuDiv.selectedLi) {
+            let del = confirm(`删除节点 <${contextmenuDiv.selectedLi.firstElementChild.textContent}>?`);
+            if (del) contextmenuDiv.selectedLi.remove();
+        }
+    }
+    //添加新文章
+    function addArticle() {
+        contextmenuDiv.style.display = 'none'; //关闭右键菜单
+        let elem = contextmenuDiv.selectedLi;
+        let subElemUl = elem.querySelector('ul');
+        if (subElemUl) {
+            subElemUl.insertAdjacentHTML('beforeend', `<li data-article-info=''><input class='editButton' type="text" name="title"></li>`);
+        } else {
+            elem.insertAdjacentHTML('beforeend', `<ul><li data-article-info=''><input class='editButton' type="text" name="title"></li></ul>`);
+        }
+        let input = elem.querySelector('input');
+        let li = input.parentElement;
+        input.focus(); //立刻获取焦点
+        input.onblur = function(e) { //失去焦点时,立刻处理
+            let newValue = input.value ? input.value : '新建节点';
+            li.innerHTML = `<span class="draggable" onmousedown="titleLiDrag(event)">${newValue}</span>`;
+            addListerForLiSpan(li.firstElementChild);
+        }
+
+    }
+    //添加最外层节点
+    function addAncesterArticle(type) {
+        if (type == 1) contextmenuDiv.style.display = 'none';
+        else contextmenuDiv2.style.display = 'none';
+
+        let li = document.createElement('li');
+        li.setAttribute('data-article-info', '');
+        li.innerHTML = `<input class='editButton' type="text" name="title">`;
+        titleTree.insertAdjacentElement('beforeend', li);
+
+        let input = li.firstElementChild;
+        input.focus();
+        input.onblur = function(e) {
+            let newValue = this.value ? this.value : '新建节点';
+            li.innerHTML = `<span class="draggable" onmousedown="titleLiDrag(event)">${newValue}</span>`;
+            addListerForLiSpan(li.firstElementChild);
+        }
+    }
+
+    /*为li下的所有span绑定单击事件*/
+    Array.from(document.body.querySelectorAll('.draggable')).forEach(function(elem) {
+        addListerForLiSpan(elem);
+    });
+    //注册整个treeUl委托处理所有右键事件
+    document.querySelector('.articleNav').addEventListener('contextmenu', e => {
+        e.preventDefault(); //阻止默认事件
+        if (!e.target.classList.contains('draggable')) {
+            contextmenuDiv2.style.left = e.pageX + 'px';
+            contextmenuDiv2.style.top = e.pageY + 'px';
+            contextmenuDiv2.style.display = "flex";
+
+            contextmenuDiv.style.display = 'none';
+        }
+    });
+
+    //注册单击窗口事件
+    document.body.addEventListener('click', function(e) {
+        //隐藏右键菜单
+        if (e.target.closest('#contextmenuDiv') != contextmenuDiv && contextmenuDiv.style.display == 'flex') {
+            contextmenuDiv.style.display = 'none';
+        }
+        if (e.target.closest('#contextmenuDiv2') != contextmenuDiv2 && contextmenuDiv2.style.display == 'flex') {
+            contextmenuDiv2.style.display = 'none';
+        }
+    });
+
+    /*手工为li的span元素添加所有监听器*/
+    function addListerForLiSpan(liSpan) {
+        liSpan.addEventListener('click', selectedLi);
+        liSpan.addEventListener('contextmenu', function(e) {
+            e.preventDefault(); //阻止默认事件
+            contextmenuDiv.style.left = e.pageX + 'px';
+            contextmenuDiv.style.top = e.pageY + 'px';
+            contextmenuDiv.style.display = "flex";
+            contextmenuDiv.selectedLi = liSpan.parentElement;
+
+            contextmenuDiv2.style.display = 'none';
+        });
+    }
+
+    /*span单击事件----------start-----------*/
+    let currentLiSpan; //当前选中的li的span元素
+    function selectedLi(e) {
+        let span = e.target;
+        selected(span);
+    }
+
+    function selected(span) {
+        if (currentLiSpan != span) {
+            if (currentLiSpan) currentLiSpan.classList.remove('selected');
+            span.classList.add('selected');
+            currentLiSpan = span;
+        }
+    }
+    /*span单击事件----------end-----------*/
+
+
+    /*
+        拖拽文章标题:算法逻辑如下
+        1 当鼠标按下时触动拖动事件,同时注册鼠标移动事件和鼠标释放事件
+        2 鼠标移动事件处理逻辑
+            a 鼠标移动时提前定义一个偏移量,就是鼠标箭头和拖拽物左上角的距离,以后移动时moveTo就保持这个相对距离
+            b 由于拖拽的是li,其没有边框和背景,拖拽时其跟随鼠标的显示方式很难固定;所以由一个预定义的div来跟随鼠标移动,此div会读取li的值并跟随鼠标显示(且采用绝对定位)具有很强的可视性;原来的li在拖拽开始时暂时隐藏(hidden=true,表明正在拖拽中)
+            c 拖拽时,为了读取拖拽物下面的可放置区域,在移动前瞬间隐藏拖拽物,移动后瞬间显示拖拽物;
+            d 进入拖拽区域(class=droppable)就改变它的样式,离开拖拽区域就祛除它的样式
+        3 鼠标释放事件:读取当前可放置区域并在该区域后插入要移动的li,同时要做下面三件事
+            a remove鼠标移动事件(mousemove)和释放事件(mouseup)
+            b 隐藏拖拽物div,显示真正的放置元素li(hidden=false)
+            c 当前可放置区域的变量清空currentDroppable=null.
+        4 拖拽细节控制:
+            1 当拖拽物小于10px时拖拽被视为无效,这是为了防止鼠标太灵活稍微点击就可能被认为是拖拽事件
+            2 在onmouseup开始时记录开始时间(startTime)和onmouseover结束时记录(记录结束事件),如果时间差小于200ms就被视为click事件而不是拖拽事件.这是为了防止click事件和拖拽事件(mousedown/mouseover)冲突;事件太短就视为click事件.
+    */
+    let currentDroppable;
+
+    function titleLiDrag(e) {
+        let startDragTime = Date.now(); //拖拽开始时间
+        let movedPx = 0,
+            startPageY = e.pageY,
+            moved = false; //记录移动的像素量和有效移动标志
+
+        let elem = e.target.closest('li'); //选择li
+        /*用一个假的div来代替原来的li进行移动*/
+        let shiftOffset = 10; //让拖拽物和鼠标有10px的偏移量
+        fakeLi.style.display = 'inline-block';
+        fakeLi.innerHTML = elem.firstElementChild.textContent;
+        //先移动一下,防止位置突然跳跃
+        fakeLi.style.left = e.pageX + 5 + 'px';
+        fakeLi.style.top = e.pageY + 5 + 'px';
+        //移动函数
+        function moveTo(pageX, pageY) {
+            fakeLi.style.left = pageX - shiftOffset + 'px';
+            fakeLi.style.top = pageY - shiftOffset + 'px';
+            movedPx += Math.abs(pageY - startPageY); //累计移动
+        }
+        //移动中的位置判断以及处理函数,e是注册监听器的第一个参数
+        function onMouseMove(e) {
+
+            moveTo(e.pageX, e.pageY);
+            if (movedPx < 10) return; //上下移动小于10像素视为无效移动.
+
+            moved = true; //标记为有效移动了.
+            elem.hidden = true; //隐藏原来的li
+
+            //先隐藏elem,不然下面看不到;同时判断下面的元素是否可放置
+            fakeLi.style.display = 'none';
+            let elemBelow = document.elementFromPoint(e.clientX, e.clientY);
+            //获取下面的元素后,再显示
+            fakeLi.style.display = 'inline-block';
+            //如果获取不到元素,说明不在document内,忽略
+            if (!elemBelow) return;
+            //获取可以放置的元素
+            let droppableBelow = elemBelow.closest('li[data-article-info]');
+            //如何放置?
+            /*
+                1 如果droppableBelow!=null,并且之前没有进入该对象(记为currentDroppable)则设置进入该对象的操作
+                2 如果之前进入过该对象,则不用改变什么
+                3 如果droppableBelow==null,并且currentDroppable已经存在,这说明正在或者已经离开可放置对象currentDroppable,那么设置离开该对象的操作.
+            */
+            if (droppableBelow != currentDroppable) {
+                if (currentDroppable) {
+                    leaveDroppable(currentDroppable);
+                }
+                currentDroppable = droppableBelow;
+                if (currentDroppable) {
+                    enterDroppable(currentDroppable);
+                }
+            }
+        }
+        //鼠标释放
+        function onMouseUp(e) {
+            document.removeEventListener('mousemove', onMouseMove);
+            document.removeEventListener('mouseup', onMouseUp);
+
+            //在目标元素后插入li,没有移动或者按下和松开鼠标小于200ms则视为无效移动
+            if (currentDroppable && moved && startDragTime > 200) {
+                if (confirm(`确定要在标签<${currentDroppable.querySelector('span').textContent}>后插入标签<${elem.querySelector('span').textContent}>么?`)) {
+                    let parent = elem.parentElement;
+                    let ul = currentDroppable.querySelector('ul');
+                    if (ul) {
+                        ul.prepend(elem)
+                    } else {
+                        currentDroppable.after(elem);
+                    }
+                    //如果最后移动的li外层的ul没有子元素,则干掉
+                    if (!parent.querySelector('li')) parent.remove();
+                }
+                currentDroppable.querySelector('span').classList.remove('droppable');
+            }
+            elem.hidden = false; //放置完毕后显示
+            currentDroppable = null;
+            fakeLi.style.display = 'none'; //隐藏fakeLi
+        }
+
+        //注册鼠标移动监听函数,一般在document上注册,防止移动过快时事件丢失
+        document.addEventListener("mousemove", onMouseMove);
+        ////注册松开鼠标事件,原来的目标elem消失,委托document监听
+        document.addEventListener('mouseup', onMouseUp);
+        //取消浏览器默认拖拽行为
+        elem.ondragstart = () => false;
+    }
+    //进入放置拽元素时处理
+    function enterDroppable(elem) {
+        currentDroppable.querySelector('span').classList.add('droppable');
+    }
+    //离开可放置元素时处理
+    function leaveDroppable(elem) {
+        currentDroppable.querySelector('span').classList.remove('droppable');
+    }
+    </script>
+</body>
+
+</html>

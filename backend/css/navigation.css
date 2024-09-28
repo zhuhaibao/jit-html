@@ -1,0 +1,80 @@
+@import url('base.css');
+
+/*标签容器*/
+.divContent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 20px 0px;
+}
+
+/*标签样式*/
+.buttonDiv {
+    position: relative;
+    width: 100px;
+    height: 40px;
+    background-color: #999999;
+    box-shadow: 0px 5px 5px rgb(0, 0, 0, 0.19);
+
+    margin: 10px 20px;
+    padding: 10px 20px;
+}
+
+.buttonDiv:hover {
+    cursor:-webkit-grab;
+    cursor: grab;
+    box-shadow: 0px 10px 15px rgb(0, 0, 0, 0.5);
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+/*拖动时可放置元素的样式*/
+.buttonDiv.droppable {
+    box-shadow: 5px 0px #5DE85D;
+}
+
+/*右上角的删除按钮*/
+.delButton {
+    cursor: pointer;
+    border: none;
+    padding: 0px 1px;
+    background-color: transparent;
+    position: absolute;
+    float: right;
+    font-size: 120%;
+    top: 0px;
+    right: 0px;
+}
+/*方便后面排列图像 */
+.searchDiv {
+    display: inline-block; 
+}
+
+/*右侧提示div*/
+.tipDiv {
+    display: none;
+    flex-direction: row;
+    position: absolute;
+    z-index: 100;
+}
+
+.tipLeft {
+    border-top: 40px solid transparent;
+    border-right: 50px solid palevioletred;
+    border-bottom: 210px solid transparent;
+    border-left: none;
+}
+
+.tipRight {
+    width: 500px;
+    height: 250px;
+    background-color: #efefef;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+}
+.tipRight ul{
+    padding: 0px;
+    margin: 0px;
+}
+.tipRight ul li {
+    list-style: none;
+    padding: 10px 20px;
+}

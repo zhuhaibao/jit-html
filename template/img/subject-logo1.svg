@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="53.030182mm"
+   height="52.867733mm"
+   viewBox="0 0 53.030182 52.867733"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     transform="translate(-17.050262,-11.256175)">
+    <g
+       id="g6"
+       style="opacity:0.99;fill:#917c6f;stroke-width:5.10236">
+      <path
+         id="path11"
+         style="fill:#e9e9ff;fill-rule:evenodd;stroke:none;stroke-linejoin:round"
+         d="m 35.129475,26.076043 34.703186,-8.313227 0.08,36.225219 L 35.1774,47.77728 Z"
+         points="69.832661,17.762816 69.91266,53.988035 35.1774,47.77728 35.129475,26.076043 " />
+      <path
+         id="path6"
+         style="fill:#353564;fill-rule:evenodd;stroke:none;stroke-linejoin:round"
+         d="M 16.882481,24.770243 16.941544,51.515097 35.1774,47.77728 35.129475,26.076043 Z"
+         points="16.941544,51.515097 35.1774,47.77728 35.129475,26.076043 16.882481,24.770243 " />
+      <path
+         id="path10"
+         style="fill:#afafde;fill-rule:evenodd;stroke:none;stroke-linejoin:round"
+         d="M 16.941544,51.515097 49.82304,64.230074 69.91266,53.988035 35.1774,47.77728 Z"
+         points="49.82304,64.230074 69.91266,53.988035 35.1774,47.77728 16.941544,51.515097 " />
+      <path
+         id="path7"
+         style="fill:#4d4d9f;fill-rule:evenodd;stroke:none;stroke-linejoin:round"
+         d="M 16.882481,24.770243 49.706288,11.36234 69.832661,17.762816 35.129475,26.076043 Z"
+         points="49.706288,11.36234 69.832661,17.762816 35.129475,26.076043 16.882481,24.770243 " />
+      <path
+         id="path9"
+         style="fill:#d7d7ff;fill-rule:evenodd;stroke:none;stroke-linejoin:round"
+         d="m 49.706288,11.36234 0.116752,52.867734 20.08962,-10.242039 -0.08,-36.225219 z"
+         points="49.82304,64.230074 69.91266,53.988035 69.832661,17.762816 49.706288,11.36234 " />
+      <path
+         id="path8"
+         style="fill:#8686bf;fill-rule:evenodd;stroke:none;stroke-linejoin:round"
+         d="M 16.882481,24.770243 49.706288,11.36234 49.82304,64.230074 16.941544,51.515097 Z"
+         points="49.706288,11.36234 49.82304,64.230074 16.941544,51.515097 16.882481,24.770243 " />
+    </g>
+  </g>
+</svg>

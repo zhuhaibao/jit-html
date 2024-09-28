@@ -1,0 +1,351 @@
+/*引入google字体*/
+@import url('https://fonts.googleapis.com/css2?family=Long+Cang&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap');
+
+
+.long-cang-regular {
+    font-family: "Long Cang", cursive;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.zcool-xiaowei-regular {
+    font-family: "ZCOOL XiaoWei", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    font: 16px/1.2 Helvetica, Verdana, Arial, sans-serif;
+    background-color: #EFEFEF;
+    color: #222222;
+}
+
+/*导航-start*/
+.banner {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    padding: 0px;
+    border: 0px;
+    background-color: #282A35;
+    color: white;
+}
+
+.logo {
+    width: 100px;
+    height: 40px;
+}
+
+.banner a {
+    color: white;
+    text-decoration: none;
+}
+
+.banner a:hover {
+    color: #03AA6D;
+
+}
+
+.bannerTitle {
+    margin: 0 20px;
+}
+
+.innerBanner {
+    margin-left: auto;
+    /* 让flex的item右对齐 */
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+.innerBanner li {
+    margin: 0 20px;
+}
+
+div.sticky {
+    position: sticky;
+    z-index: 1001;
+    top: 0px;
+}
+
+.titleSelected {
+    color: #03AA6D;
+    font-weight: bold;
+}
+
+/*导航-end*/
+
+/*主内容区css*/
+#content {
+    padding: 40px 20px;
+    background-color: white;
+    width: 80%;
+    min-height: calc(100vh - 10px);
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.2);
+}
+
+/*编辑操作区,里面有操作按钮等*/
+.functionDiv {
+    margin-bottom: 15px;
+}
+
+.editDiv {
+    display: inline-block;
+    float: right;
+}
+
+/*搜索框样式-start*/
+.searchDiv {
+    position: relative;
+    display: inline-block;
+}
+
+.searchInput {
+    display: inline-block;
+    font-size: 16px;
+    width: 200px;
+    padding: 10px 10px 10px 40px;
+    border: 1px solid grey;
+    border-radius: 2px;
+    box-sizing: border-box;
+    box-shadow: 0px 3px 2px 2px rgba(0, 0, 0, 0.1);
+    background: url("../img/searchicon.png") 10px 10px no-repeat;
+}
+
+.searchInput:focus {
+    width: 400px;
+    box-shadow: 0px 3px 3px 2px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s;
+}
+
+.searchButton {
+    position: absolute;
+    right: 0;
+}
+
+.searchButton:hover {
+    background-color: #efefef;
+    cursor: pointer;
+}
+
+/*搜索框样式-end*/
+
+/*分页样式-start*/
+.page {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    font-style: italic;
+    align-items: center;
+    background-color: #efefef;
+}
+
+.page li a {
+    display: block;
+    text-decoration: none;
+    font-style: italic;
+    padding: 10px 15px;
+}
+
+.page li a:hover {
+    font-weight: bold;
+    background-color: white;
+}
+
+.viewPage {
+    padding: 0 10px;
+}
+
+/*分页样式-end*/
+/*td下button样式-start*/
+td .editButton {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border: none;
+    outline: medium;
+    background-color: transparent;
+    font-size: 16px;
+    font-style: italic;
+    border-bottom: 1px solid green;
+}
+
+/*td下button样式-end*/
+
+/*提示窗口confirm通用样式-start*/
+.publicConfirmTip {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    overflow: auto;
+}
+
+.publicConfirmTipContent {
+    position: relative;
+    width: 300px;
+    background-color: #fefefe;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2), 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.publicConfirmTipHeader {
+    background-color: #5cb85c;
+    text-align: right;
+}
+
+.publicConfirmTipHeader .publicConfirmCloseTip {
+    cursor: pointer;
+    font-size: 25px;
+    padding: 0px 15px;
+}
+
+.publicConfirmTipBody {
+    text-align: center;
+}
+
+.publicConfirmTipBody .publicConfirmTooltip {
+    size: 20px;
+    text-align: center;
+}
+
+.publicConfirmTipFooter {
+    text-align: right;
+}
+
+.publicConfirmTipFooter .publicConfirmTipButton {
+    border: none;
+    margin: 5px 10px;
+    padding: 5px 15px;
+    border-radius: 3px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.publicConfirmTipFooter .publicConfirmTipButton:hover {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+/*提示窗口通用样式-end*/
+
+/*通用的操作按钮的样式---start*/
+.doButton {
+    width: 80px;
+    display: block;
+    padding: 10px 20px;
+    margin: auto;
+    border-radius: 4px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+.doButton:hover {
+    display: block;
+    background-color: #eFEFEF;
+    cursor: pointer;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
+}
+
+/*通用的操作按钮的样式---end*/
+
+/*弹出编辑窗口-start*/
+.modal {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow: auto;
+}
+
+.modalContent {
+    position: relative;
+    width: 50%;
+    margin: 200px auto auto auto;
+    background-color: #fefefe;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.modalTitle {
+    padding: 2px 16px;
+    position: sticky;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+.close {
+    font-size: 30px;
+    color: #444444;
+    font-weight: bold;
+    float: right;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #222222;
+}
+
+.modalBody {
+    height: 400px;
+    overflow: auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.modalFooter {
+    color: white;
+    position: sticky;
+    background-color: #efefef;
+}
+/*弹出编辑窗口-end*/
+
+/*一般的表单布局*/
+.formContainer * {
+    box-sizing: border-box;
+}
+.formContainer input,
+.formContainer textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.colLabel {
+    float: left;
+    width: 15%;
+}
+
+.colValue {
+    float: left;
+    width: 85%;
+}
+
+.formRow:after {
+    content: "";
+    clear: both;
+    display: block;
+}

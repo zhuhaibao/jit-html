@@ -1,0 +1,50 @@
+/*主题区域*/
+    .subjectArea {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .subjectHeader {
+        width: 200px;
+        height: 300px;
+        margin: 5px 10px;
+        border-radius: 5px;
+        border: 1px solid #cccccc;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .subjectHeader:hover {
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .subjectHeader a {
+        display: block;
+        text-decoration: none;
+        text-align: center;
+    }
+
+    .subjectHeader img {
+        height: 100px;
+        width: 200px;
+    }
+
+    /*文章列表区*/
+    .articleArea {
+        margin: 0 0 20px 10px;
+    }
+
+    .articleHeader {
+        padding-left: 10px;
+    }
+
+    .articleHeader a {
+        letter-spacing: 1.5px;
+        text-decoration: none;
+        color: #282A35;
+    }
+
+    .articleHeader a:hover {
+        color: #5449C0;
+        font-weight: bold;
+    }

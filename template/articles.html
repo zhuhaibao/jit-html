@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>专题文章</title>
+    <link rel="stylesheet" href="./js/lib/prism/prism.css">
+    <script src="./js/lib/prism/prism.js"></script>
+    <script src="./js/base.js"></script>
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/articles.css" />
+    <link rel="stylesheet" href="./css/devices.css" />
+
+</head>
+
+<body>
+    <div class="topDiv">
+        <div class="topBar">
+            <div class="logoDiv">
+                <a href="index.html">
+                    <img src="img/logo.svg">
+                </a>
+            </div>
+            <div class="searchDiv">
+                <input type="text" name="searchKey" id="searchInput" placeholder="搜索文章..." onfocus="searchByKey(event)" oninput="searchByKey(event)" onblur="onFocusLose(event);">
+                <img class="searchImg" src="img/searchicon.svg" onclick="gSearchByKey(event)">
+            </div>
+            <div class="userInfoDiv">
+                <span>朱海保</span>
+            </div>
+        </div>
+        <div class="navBar">
+            <div class="arrow" id="leftArrow"></div>
+            <i id="treeBar" class="fa fa-bars treeBar" onclick="treeBarFun();"></i>
+            <nav>
+                <ul>
+                    <!--第一个文章标签,固定显示-->
+                    <li id="articleLabel"><a href="article.html">点滴文章</a></li>
+                    <li><a href="articles.html">javascript</a></li>
+                    <li><a href="articles.html">springboot</a></li>
+                    <li><a href="articles.html">vue.js</a></li>
+                    <li><a href="articles.html">kubernetes</a></li>
+                    <li><a href="articles.html">css</a></li>
+                    <li><a href="articles.html">html</a></li>
+                    <li><a href="articles.html">kafka</a></li>
+                    <li><a href="articles.html">rabbitmq</a></li>
+                    <li><a href="articles.html">javascript</a></li>
+                    <li><a href="articles.html">springboot</a></li>
+                    <li><a href="articles.html">vue.js</a></li>
+                    <li><a href="articles.html">kubernetes</a></li>
+                    <li><a href="articles.html">css</a></li>
+                    <li><a href="articles.html">html</a></li>
+                    <li><a href="articles.html">kafka</a></li>
+                    <li><a href="articles.html">rabbitmq</a></li>
+                    <li><a href="articles.html">rabbitmq</a></li>
+                    <li><a href="articles.html">rabbitmq1</a></li>
+                    <li><a href="articles.html">rabbitmq2</a></li>
+                    <li><a href="articles.html">rabbitmq3</a></li>
+                    <li><a href="articles.html">rabbitmq4</a></li>
+                    <li class="selected"><a href="articles.html">rabbitmq5</a></li>
+                    <li><a href="articles.html">rabbitmq6</a></li>
+                    <li><a href="articles.html">rabbitmq7</a></li>
+                    <li><a href="articles.html">rabbitmq8</a></li>
+                    <li><a href="articles.html">rabbitmq9</a></li>
+                </ul>
+            </nav>
+            <div class="arrow" id="rightArrow"></div>
+        </div>
+    </div>
+    <div class="mainDiv">
+        <div class="titleTreeDiv700 titleTreeDiv" id="titleTreeDiv">
+            <p style="margin-left: 10px; font-size:16px">Javapring基础教程</p>
+            <nav class="titleTree">
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>Java简介</a>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>字符串</a>
+                <div>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>字符串编码</a>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>字符串缓冲</a>
+                    <div>
+                        <a class="selected" href="javascript:void(0)" onclick='navigateArticle(event)'>java swing4</a>
+                        <a href="javascript:void(0)" onclick='navigateArticle(event)'>java swing5</a>
+                        <a href="javascript:void(0)" onclick='navigateArticle(event)'>java swing6</a>
+                    </div>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>intern方法</a>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>字符串与字符</a>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>字符编码</a>
+                </div>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>while</a>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>for循环</a>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>运算符</a>
+                <div>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>算数运算</a>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>逻辑运算</a>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>布尔运算</a>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>位运算</a>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>一元/三元</a>
+                </div>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>枚举类型</a>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>n元组</a>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>数组</a>
+                <div>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>数组与内存</a>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>数组的便利方法</a>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>数组和列表的区别</a>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>数组foreach</a>
+                </div>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>集合类型</a>
+                <div>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>列表</a>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>有序列表</a>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>映射表</a>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>集合SET</a>
+                </div>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>反射</a>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>动态代理</a>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>泛型</a>
+                <div>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>通配符的使用</a>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>泛型的边界</a>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>泛型数组</a>
+                </div>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>线程</a>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>线程与死锁</a>
+                <div>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>死锁条件</a>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>典型案例</a>
+                    <a href="javascript:void(0)" onclick='navigateArticle(event)'>避免死锁</a>
+                </div>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>java swing</a>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>java swing2</a>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>java swing3</a>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>java swing4</a>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>java swing5</a>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>java swing6</a>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>java swing7</a>
+                <a href="javascript:void(0)" onclick='navigateArticle(event)'>java swing8</a>
+            </nav>
+        </div>
+        <div class="contentDiv">
+            <section>
+                <header><span class="articleTitle">Springboot开发</span></header>
+                <section title="author" class="author">
+                    <img id="authorLogo" src="img/subject-logo4.svg">
+                    <a class="authorName zcool-xiaowei-regular" href="https://twitter.com/jumperoverfgw">朱海保</a>
+                    <a href="https://github.com/zhuhaibao"><img class="siteImg" src="img/github.svg"></a>
+                    <a href="https://twitter.com/jumperoverfgw"><img class="siteImg" src="img/X.svg"></a>
+                    <span class='zcool-xiaowei-regular'>自由职业 专业开发 10年it魔域经验</span>
+                </section>
+                <article>
+                    <h1>Itaque nostrum est-quod nostrum dico, a<img src="http://localhost:8081/backend/img/test/pexels-kei-scampa-4507967.jpeg" alt="" width="293" style="float: right;" height="521">rtis est-ad ea principia, quae accepimus.</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <em>Quonam, inquit, modo?</em> <mark>Illum mallem levares, quo optimum atque humanissimum virum, Cn.</mark> Quae quidem vel cum periculo est quaerenda vobis; Amicitiam autem adhibendam esse censent,
+                        quia sit ex eo genere, quae prosunt. <a href="http://loripsum.net/" target="_blank">Duo Reges: constructio interrete.</a> Illud quaero, quid ei, qui in voluptate summum bonum ponat, consentaneum sit dicere. At vero illa, quae Peripatetici, quae Stoici
+                        dicunt, semper tibi in ore sunt in iudiciis, in senatu. Dic in quovis conventu te omnia facere, ne doleas. Nummus in Croesi divitiis obscuratur, pars est tamen divitiarum. Isto modo ne improbos quidem, si essent boni viri. Luxuriam non reprehendit,
+                        modo sit vacua infinita cupiditate et timore. Sit ista in Graecorum levitate perversitas, qui maledictis insectantur eos, a quibus de veritate dissentiunt. </p>
+                    <blockquote cite="http://loripsum.net">
+                        Nec enim absolvi beata vita sapientis neque ad exitum perduci poterit, si prima quaeque bene ab eo consulta atque facta ipsius oblivione obruentur.
+                    </blockquote>
+                    <pre class="language-javascript">//计算鼠标和button的相对位置
+            let elemCoords = elem.getBoundingClientRect();
+            let shiftX = e.clientX - elemCoords.left;
+            let shiftY = e.clientY - elemCoords.top;
+            //把拖拽物变成绝对定位
+            elem.style.position = 'absolute';
+            elem.style.zIndex = 1000;
+            elem.style.margin = 0;
+
+            moveTo(e.pageX, e.pageY); //先移动一下,防止位置突然跳跃
+            //移动函数
+            function moveTo(pageX, pageY) {
+                elem.style.left = pageX - shiftX + 'px';
+                elem.style.top = pageY - shiftY + 'px';
+                movedPx += Math.abs(pageY - startPageY); //累计移动
+            }
+            //移动中的位置判断以及处理函数,e是注册监听器的第一个参数
+            function onMouseMove(e) {
+                moveTo(e.pageX, e.pageY);
+                if (movedPx &lt; 10) return; //上下移动小于10像素视为无效移动.
+
+                //有效移动
+                moved = true;
+                //先隐藏elem,不然下面看不到;同时判断下面的元素是否可放置
+                elem.hidden = true;
+                let elemBelow = document.elementFromPoint(e.clientX, e.clientY);
+                //获取下面的元素后,再显示
+                elem.hidden = false;
+                //如果获取不到元素,说明不在document内,忽略</pre>
+                    <ul>
+                        <li>Possumusne ergo in vita summum bonum dicere, cum id ne in cena quidem posse videamur?</li>
+                        <li>Quodsi vultum tibi, si incessum fingeres, quo gravior viderere, non esses tui similis;</li>
+                    </ul>
+                    <ol>
+                        <li>Qui autem diffidet perpetuitati bonorum suorum, timeat necesse est, ne aliquando amissis illis sit miser.</li>
+                        <li>Nulla profecto est, quin suam vim retineat a primo ad extremum.</li>
+                    </ol>
+                    <dl>
+                        <dt><dfn>Falli igitur possumus.</dfn></dt>
+                        <dd>Quid enim ab antiquis ex eo genere, quod ad disserendum valet, praetermissum est?</dd>
+                        <dt><dfn>Scrupulum, inquam, abeunti;</dfn></dt>
+                        <dd>Scio enim esse quosdam, qui quavis lingua philosophari possint;</dd>
+                        <dt><dfn>Poterat autem inpune;</dfn></dt>
+                        <dd>Tum ille: Tu autem cum ipse tantum librorum habeas, quos hic tandem requiris?</dd>
+                        <dt><dfn>Beatum, inquit.</dfn></dt>
+                        <dd>Respondeat totidem verbis.</dd>
+                    </dl>
+                </article>
+            </section>
+        </div>
+    </div>
+
+    <!--显示搜索结果-->
+    <div id="searchResultDiv">
+        <div id="searchResult">
+            <a class="resultItem" href="index.html"><span class="keyword">Java</span>专题</a>
+            <a class="resultItem" href="article.html"><span class="keyword">Java</span>Script专题</a>
+            <a class="resultItem" href="article.html"><span class="keyword">Java</span>SpringBoot专题</a>
+            <a class="resultItem" href="article.html"><span class="keyword">Java</span>RabbitMq专题</a>
+            <a class="resultItem" href="article.html"><span class="keyword">java</span>动态代理文章</a>
+            <a class="resultItem" href="article.html"><span class="keyword">java</span>设计模式专题</a>
+            <a class="resultItem" href="article.html">新版<span class="keyword">java22</span>特性专题</a>
+            <a class="resultItem" href="article.html">模块化<span class="keyword">java</span>开发专题</a>
+        </div>
+        <hr>
+        <a class="siteSearch" href="javascript:void(0);" onclick="gSearchByKey(event)">站内搜索</a>
+    </div>
+    <!--模态窗口div,显示google结果-->
+    <div class="modal" id="modalResult" onclick="if(event.target==modalResult)modalResult.style.display='none'">
+        <div class="modalContent">
+            <div class="modalBody">
+                <div class="googleSearchTitle">
+                    <span class="close" id='close' onclick="modalResult.style.display='none'">&times;</span>
+                    <span class="resultAnalysis">About 18,900 results (0.20 seconds)</span><br>
+                    <hr class="hrsplit">
+                </div>
+                <div id="googleResult">
+                    <div class="gItem">
+                        <a class="gTitle" href="#"><b>Java</b>专题</a><br>
+                        <span class="gPath">www.jit.com › java</span><br>
+                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Javas dfasf sasdf asfsdf adf sa fsasd fa now.</span>
+                    </div>
+                    <div class="gItem">
+                        <a class="gTitle" href="#"><b>Java</b>专题</a><br>
+                        <span class="gPath">www.jit.com › java</span><br>
+                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
+                    </div>
+                    <div class="gItem">
+                        <a class="gTitle" href="#"><b>Java</b>专题</a><br>
+                        <span class="gPath">www.jit.com › java</span><br>
+                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
+                    </div>
+                    <div class="gItem">
+                        <a class="gTitle" href="#"><b>Java专题</b></a><br>
+                        <span class="gPath">www.jit.com › java</span><br>
+                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
+                    </div>
+                    <div class="gItem">
+                        <a class="gTitle" href="#"><b>Java专题</b></a><br>
+                        <span class="gPath">www.jit.com › java</span><br>
+                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
+                    </div>
+                    <div class="gItem">
+                        <a class="gTitle" href="#"><b>Java专题</b></a><br>
+                        <span class="gPath">www.jit.com › java</span><br>
+                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
+                    </div>
+                    <div class="gItem">
+                        <a class="gTitle" href="#"><b>Java专题</b></a><br>
+                        <span class="gPath">www.jit.com › java</span><br>
+                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
+                    </div>
+                    <div class="gItem">
+                        <a class="gTitle" href="#"><b>Java专题</b></a><br>
+                        <span class="gPath">www.jit.com › java</span><br>
+                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
+                    </div>
+                    <div class="gItem">
+                        <a class="gTitle" href="#"><b>Java专题</b></a><br>
+                        <span class="gPath">www.jit.com › java</span><br>
+                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
+                    </div>
+                    <div class="gItem">
+                        <a class="gTitle" href="#"><b>Java专题</b></a><br>
+                        <span class="gPath">www.jit.com › java</span><br>
+                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
+                    </div>
+                </div>
+                <div class="gPage">
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#">7</a>
+                    <a href="#">8</a>
+                    <a href="#">9</a>
+                    <a href="#">10</a>
+                </div>
+                <div class="gBottom">
+                    <a class="togoogle" href="https://www.google.com/search?client=ms-google-coop&q=java&cx=c5f6ccbd4ce9405a8"><img src='./img/searchlogo.svg'>Search for <b>java</b> on Google</a>
+                    <a class="togoogle-enhance" href="https://programmablesearchengine.google.com/about/"><img src="./img/enhanceByGoogle.png"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    showNavBar();
+    
+    </script>
+</body>
+
+</html>
