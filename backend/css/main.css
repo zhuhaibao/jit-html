@@ -2,6 +2,7 @@ body {
     font: small/1.6em 楷体, 微软雅黑, 宋体, Verdana, Helvetica, Arial, sans-serif;
     background-color: #F2F3F5;
 }
+
 /*body*/
 
 #header {
@@ -10,9 +11,11 @@ body {
     margin-right: 10px;
     background-color: #FFFFFF;
 }
+
 #header nav {
     display: inline-block;
 }
+
 #header nav ul {
     margin: 0px;
     padding: 0px;
@@ -29,8 +32,9 @@ body {
     height: 50px;
     vertical-align: middle;
 }
+
 #userImg {
-	height: 50px;
+    height: 50px;
     vertical-align: middle;
     margin-left: 100px;
 }
@@ -45,43 +49,50 @@ body {
 .buttonclass {
     height: 30px;
 }
+
 /*导航*/
 
 #mainDiv {
-	display: table;
-	border-spacing: 10px;
-	margin-left: auto;
-	margin-right: auto;
+    display: table;
+    border-spacing: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
-#tableRow{
-	display: table-row;
+
+#tableRow {
+    display: table-row;
 }
+
 #searchresult {
-	display: table-cell;
-	background-color: #FFFFFF;
+    display: table-cell;
+    background-color: #FFFFFF;
     width: 900px;
     padding: 10px;
 }
 
 #commentlist {
-	display: table-cell;
-	background-color: #FFFFFF;
+    display: table-cell;
+    background-color: #FFFFFF;
     width: 250px;
     padding: 10px;
 }
+
 .article_title {
-	color: #252933;
+    color: #252933;
 }
+
 .article_keyword {
-	color: #8E94A2;
+    color: #8E94A2;
 }
+
 .userImg {
-	width: 30px;
-	vertical-align: middle;
-	margin-right: 20px;
+    width: 30px;
+    vertical-align: middle;
+    margin-right: 20px;
 }
+
 /*页面内容*/
 
 footer {
-	text-align: center;
+    text-align: center;
 }

@@ -1,6 +1,8 @@
 <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
- <g id="Layer_1">
-  <title>Layer 1</title>
-  <path stroke="#000" id="svg_1" d="m39.79382,7.47396l-18.47319,12.52679l18.47319,12.52677l-10.55723,7.16319l-29.0304,-19.68997l29.0304,-19.69147" fill="#ffffff"/>
- </g>
+    <g id="Layer_1">
+        <title>Layer 1</title>
+        <path stroke="#000" id="svg_1"
+              d="m39.79382,7.47396l-18.47319,12.52679l18.47319,12.52677l-10.55723,7.16319l-29.0304,-19.68997l29.0304,-19.69147"
+              fill="#ffffff"/>
+    </g>
 </svg>

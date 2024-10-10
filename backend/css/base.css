@@ -85,7 +85,7 @@ div.sticky {
     padding: 40px 20px;
     background-color: white;
     width: 80%;
-    min-height: calc(100vh - 10px);
+    min-height: calc(100vh - 20px);
     box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;
@@ -140,29 +140,58 @@ div.sticky {
 /*搜索框样式-end*/
 
 /*分页样式-start*/
+.pageModule *{
+    box-sizing: border-box;
+}
+.pageModule {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.pageParam {
+    margin-top: 10px;
+}
+
+.pageParam input {
+    width: 50px;
+    margin: 5px 15px;
+    padding: 2px 5px;
+}
+
 .page {
     display: flex;
     flex-direction: row;
-    list-style-type: none;
-    font-style: italic;
     align-items: center;
-    background-color: #efefef;
 }
 
-.page li a {
-    display: block;
-    text-decoration: none;
-    font-style: italic;
-    padding: 10px 15px;
+.page a {
+    display: inline-block;
+    padding: 5px 15px;
 }
 
-.page li a:hover {
-    font-weight: bold;
-    background-color: white;
+.page a:hover {
+    cursor: pointer;
 }
 
-.viewPage {
-    padding: 0 10px;
+.pageButton {
+    width: 70px;
+    height: 30px;
+    border: none;
+    background-color: #03AA6D;
+    border-radius: 4px;
+}
+
+.pageButton:hover {
+    cursor: pointer;
+    background-color: #0DA960;
+}
+
+.page .pageSelected {
+    background-color: #cccccc;
+}
+
+.page .pageSelected:hover {
+    cursor: auto;
 }
 
 /*分页样式-end*/
@@ -319,12 +348,14 @@ td .editButton {
     position: sticky;
     background-color: #efefef;
 }
+
 /*弹出编辑窗口-end*/
 
 /*一般的表单布局*/
 .formContainer * {
     box-sizing: border-box;
 }
+
 .formContainer input,
 .formContainer textarea {
     width: 100%;

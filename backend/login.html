@@ -9,35 +9,35 @@
 </head>
 
 <body>
-    <div class='form-div'>
-        <form>
-            <label for="username">管理员</label>
-            <input type="text" name="username" id="username" placeholder="用户名/手机号">
-            <label for="password">密码</label>
-            <div id='passDiv'>
-                <input type="password" name="password" id="password" style="padding-right: 100px;">
-                <svg id="viewPass" width="70" height="30" xmlns="http://www.w3.org/2000/svg">
-                    <g>
-                        <ellipse id="eyeOuterline" stroke="#000" ry="10" rx="34.5" id="svg_3" cy="15" cx="35" fill="none" />
-                        <ellipse stroke="#000" ry="6.97674" rx="7.96154" id="svg_5" cy="15" cx="35" fill="none" />
-                        <line id="viewEye" stroke="#000" y2="20.34884" x2="29.825" y1="9.65116" x1="40.175" fill="none" />
-                    </g>
-                </svg>
-            </div>
-            <input class="loginButton" type="button" value="进入" onclick="window.location = 'subject.html'">
-        </form>
-        <div>
-            <script type="text/javascript">
-                viewPass.onclick = function(){
-                    if(password.type === 'password'){
-                        password.type = 'text';
-                        viewEye.setAttribute('stroke','#EFEFEF');
-                    }else{
-                        password.type = 'password';
-                        viewEye.setAttribute('stroke','#000');
-                    }
+<div class='form-div'>
+    <form>
+        <label for="username">管理员</label>
+        <input type="text" name="username" id="username" placeholder="用户名/手机号">
+        <label for="password">密码</label>
+        <div id='passDiv'>
+            <input type="password" name="password" id="password" style="padding-right: 100px;">
+            <svg id="viewPass" width="70" height="30" xmlns="http://www.w3.org/2000/svg">
+                <g>
+                    <ellipse id="eyeOuterline" stroke="#000" ry="10" rx="34.5" id="svg_3" cy="15" cx="35" fill="none"/>
+                    <ellipse stroke="#000" ry="6.97674" rx="7.96154" id="svg_5" cy="15" cx="35" fill="none"/>
+                    <line id="viewEye" stroke="#000" y2="20.34884" x2="29.825" y1="9.65116" x1="40.175" fill="none"/>
+                </g>
+            </svg>
+        </div>
+        <input class="loginButton" type="button" value="进入" onclick="window.location = 'subject.html'">
+    </form>
+    <div>
+        <script type="text/javascript">
+            viewPass.onclick = function () {
+                if (password.type === 'password') {
+                    password.type = 'text';
+                    viewEye.setAttribute('stroke', '#EFEFEF');
+                } else {
+                    password.type = 'password';
+                    viewEye.setAttribute('stroke', '#000');
                 }
-            </script>
+            }
+        </script>
 </body>
 
 </html>

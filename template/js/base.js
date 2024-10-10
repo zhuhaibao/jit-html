@@ -17,13 +17,13 @@ function showPublicConfirm(e, message) {
     //3 显示对话框
     publicConfirmTip.style.display = "block";
 
-    publicConfirmTipButtonConfirm.onclick = function() {
+    publicConfirmTipButtonConfirm.onclick = function () {
         //后台服务
         /*后代服务代码*/
         e.target.offsetParent.remove();
         publicConfirmTip.style.display = 'none';
     }
-    publicConfirmTipButtonCancel.onclick = function() {
+    publicConfirmTipButtonCancel.onclick = function () {
         publicConfirmTip.style.display = 'none';
     }
 }
@@ -53,7 +53,7 @@ function getScrollDocumentHeight() {
 //对于输入变动事件的函数进行包装,防抖动功能,避免请求太频繁
 function debounce(f, timeout) {
     let timerId;
-    return function() {
+    return function () {
         clearTimeout(timerId); //立刻清除上次timer
         timerId = setTimeout(() => {
             f.apply(this, arguments);
@@ -68,6 +68,7 @@ function randomInteger(min, max) { //产生随机整数
 function randomInteger(n) { //产生随机整数
     return Math.floor(Math.random() * n);
 }
+
 /*下面函数决定如何显示导航栏以及左右按钮,导航栏左右按钮轮播,需求如下
             1 页面刚开始加载时,根据选中的区域决定是否滚动,
                 窗口滚动的距离计算:获取当前选中的元素li,x=(li.left+li.offsetWidth-document.documentElement.offsetWidth);
@@ -87,7 +88,7 @@ function showNavBar() {
         //如果右边距大于窗口宽度,则需要一次性向右滚动;同时显示左按钮
         let needScrollWidth = coords.left + selectedLi.offsetWidth - document.documentElement.offsetWidth;
         if (needScrollWidth > 0) {
-            nav.scrollBy(needScrollWidth+30, 0);//多出30像素超过箭头
+            nav.scrollBy(needScrollWidth + 30, 0);//多出30像素超过箭头
         }
         showArrow(nav);
     }
@@ -104,21 +105,23 @@ function showNavBar() {
         nav.scrollBy(-width, 0);
         showArrow(nav);
     }
+
     //模拟taphold事件
-    rightArrow.onmousedown = function(e) {
+    rightArrow.onmousedown = function (e) {
         tapHold(rightArrow, toRight, start, step)();
     }
-    leftArrow.onmousedown = function(e) {
+    leftArrow.onmousedown = function (e) {
         tapHold(leftArrow, toLeft, start, step)();
     }
-    nav.onscroll = function(e){
+    nav.onscroll = function (e) {
         showArrow(nav);
     }
 }
+
 //taphold事件包装器
 function tapHold(elem, f, start, step) {
     let timerOut, timeInterval;
-    return function() {
+    return function () {
         timerOut = setTimeout(() => {
             timeInterval = setInterval(() => {
                 f.apply(f, arguments);
@@ -134,11 +137,12 @@ function tapHold(elem, f, start, step) {
         };
     }
 }
+
 //是否显示左右按钮
 function showArrow(nav) {
     //如果导航左边距<0,显示左按钮
     let coords = nav.getBoundingClientRect();
-    if (nav.firstElementChild.nextElementSibling.getBoundingClientRect().left-115 < 0) {//需要去掉ul边界的padding-left
+    if (nav.firstElementChild.nextElementSibling.getBoundingClientRect().left - 115 < 0) {//需要去掉ul边界的padding-left
         leftArrow.hidden = false;
     } else {
         leftArrow.hidden = true;
@@ -150,35 +154,38 @@ function showArrow(nav) {
     }
 }
 
-let searchByKeyDecorator = debounce(queryFromServer,500);//设定500ms的间隔
+let searchByKeyDecorator = debounce(queryFromServer, 500);//设定500ms的间隔
 //input框失去焦点
-function onFocusLose(e){
+function onFocusLose(e) {
     let related = e.relatedTarget;
     console.log(related);
-    if(related != null && (related.classList.contains('resultItem') || related.classList.contains('siteSearch')))return;
+    if (related != null && (related.classList.contains('resultItem') || related.classList.contains('siteSearch'))) return;
     searchResultDiv.style.display = 'none';
 }
+
 //关键字搜索
 function searchByKey(e) {
     let searchKey = searchInput.value;
     searchByKeyDecorator(searchInput.value);
 }
+
 //关键字搜索,请求服务
-function queryFromServer(searchKey){
-    if(!searchKey)return;
+function queryFromServer(searchKey) {
+    if (!searchKey) return;
     //从服务器获取数据
 
     //往searchResult中填充数据
 
     //显示searchResultDiv
-    searchResultDiv.style.left = searchInput.getBoundingClientRect().left+'px';
-    searchResultDiv.style.top = searchInput.getBoundingClientRect().bottom+'px';
+    searchResultDiv.style.left = searchInput.getBoundingClientRect().left + 'px';
+    searchResultDiv.style.top = searchInput.getBoundingClientRect().bottom + 'px';
     searchResultDiv.style.display = 'block';
 }
+
 //google搜索
-function gSearchByKey(){
+function gSearchByKey() {
     let searchKey = searchInput.value;
-    if(!searchKey)return;
+    if (!searchKey) return;
     //从服务器获取数据
 
     //往googleResult中填充数据
@@ -197,11 +204,12 @@ function navigateArticle(e) {
 function treeBarFun() {
     titleTreeDiv.classList.toggle('titleTreeDiv700');
 }
+
 //页面委托处理treeBar的显示与否
-document.addEventListener('click',e=>{
-    if(e.target.closest('#treeBar')) return;
-    if(e.target.closest('.titleTreeDiv')) return;
-    if(!titleTreeDiv.classList.contains('titleTreeDiv700')){
+document.addEventListener('click', e => {
+    if (e.target.closest('#treeBar')) return;
+    if (e.target.closest('.titleTreeDiv')) return;
+    if (!titleTreeDiv.classList.contains('titleTreeDiv700')) {
         titleTreeDiv.classList.toggle('titleTreeDiv700');
     }
 });

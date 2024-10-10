@@ -8,185 +8,261 @@
     <script src="js/base.js"></script>
     <title>导航管理</title>
     <style type="text/css">
-    /*下拉框提示div*/
-    .pulldownDiv {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        z-index: 100;
-        left: 5px;
-        top: 45px;
-    }
+        /*下拉框提示div*/
+        .pulldownDiv {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            z-index: 100;
+            left: 5px;
+            top: 45px;
+        }
 
-    .pulldownDivTipTop {
-        border-top: none;
-        border-right: 380px solid transparent;
-        border-bottom: 50px solid palevioletred;
-        border-left: 20px solid transparent;
-    }
+        .pulldownDivTipTop {
+            border-top: none;
+            border-right: 380px solid transparent;
+            border-bottom: 50px solid palevioletred;
+            border-left: 20px solid transparent;
+        }
 
-    .pulldownDivTipBody {
-        width: 400px;
-        max-height: 600px;
-        background-color: #efefef;
-        box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
-        overflow: auto;
-    }
+        .pulldownDivTipBody {
+            width: 400px;
+            max-height: 600px;
+            background-color: #efefef;
+            box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+            overflow: auto;
+        }
 
-    .pulldownDivTipBody ul {
-        padding: 0px;
-        margin: 0px;
-    }
+        .pulldownDivTipBody ul {
+            padding: 0px;
+            margin: 0px;
+        }
 
-    .pulldownDivTipBody ul li {
-        list-style: none;
-        padding: 10px 15px;
-    }
+        .pulldownDivTipBody ul li {
+            list-style: none;
+            padding: 10px 15px;
+        }
 
-    .pulldownDivTipBody ul li:hover {
-        background-color: #999999;
-    }
+        .pulldownDivTipBody ul li:hover {
+            background-color: #999999;
+        }
 
-    .pulldownButton {
-        border: none;
-        float: right;
-        padding: 2px 15px;
-        border-radius: 3px;
-        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
-    }
+        .pulldownButton {
+            border: none;
+            float: right;
+            padding: 2px 15px;
+            border-radius: 3px;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+        }
 
-    .pulldownButton:hover {
-        background-color: #5DB85D;
-    }
+        .pulldownButton:hover {
+            background-color: #5DB85D;
+        }
 
-    /*搜索框样式-start*/
-    #searchInput {
-        display: inline-block;
-        font-size: 16px;
-        width: 300px;
-        padding: 10px 10px 10px 40px;
-        border: 1px solid grey;
-        border-radius: 2px;
-        box-sizing: border-box;
-        box-shadow: 0px 3px 2px 2px rgba(0, 0, 0, 0.1);
-        background: url("img/searchicon.png") 10px 10px no-repeat;
-    }
+        /*搜索框样式-start*/
+        #searchInput {
+            display: inline-block;
+            font-size: 16px;
+            width: 300px;
+            padding: 10px 10px 10px 40px;
+            border: 1px solid grey;
+            border-radius: 2px;
+            box-sizing: border-box;
+            box-shadow: 0px 3px 2px 2px rgba(0, 0, 0, 0.1);
+            background: url("img/searchicon.png") 10px 10px no-repeat;
+        }
 
-    #searchInput:hover {
-        width: 400px;
-        box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.1);
-        transition: all 0.5s;
-    }
+        #searchInput:hover {
+            width: 400px;
+            box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s;
+        }
     </style>
 </head>
 
 <body>
-    <div class="sticky">
-        <header>
-            <nav>
-                <ul class="banner">
-                    <li><img src="img/logo.svg" class="logo"></li>
-                    <li class="bannerTitle"><a href="subject.html">主题管理</a></li>
-                    <li class="bannerTitle"><a href="articles.html">文章管理</a></li>
-                    <li class="bannerTitle"><a style="color: #03AA6D; font-weight: bold;" href="navigation.html">导航管理</a></li>
-                    <ul class="innerBanner">
-                        <li>朱海保</li>
-                        <li><a href="login.html">退出</a></li>
-                    </ul>
+<div class="sticky">
+    <header>
+        <nav>
+            <ul class="banner">
+                <li><img src="img/logo.svg" class="logo"></li>
+                <li class="bannerTitle"><a href="subject.html">主题管理</a></li>
+                <li class="bannerTitle"><a href="articles.html">文章管理</a></li>
+                <li class="bannerTitle"><a style="color: #03AA6D; font-weight: bold;"
+                                           href="navigation.html">导航管理</a></li>
+                <ul class="innerBanner">
+                    <li>朱海保</li>
+                    <li><a href="login.html">退出</a></li>
                 </ul>
-            </nav>
-        </header>
-    </div>
-    <div id='content'>
-        <section>
-            <!-- 搜索条件-->
-            <search>
-                <form>
-                    <div class="functionDiv">
-                        <div class="searchDiv" id='searchDiv'>
-                            <input id="searchInput" class="searchInput" type="text" placeholder="输入主题名,并添加标签" oninput="changePulldown(this.value);">
-                            <div class="pulldownDiv" id="pulldownDiv">
-                                <div class='pulldownDivTipTop'></div>
-                                <div class="pulldownDivTipBody">
-                                    <ul class="zcool-xiaowei-regular" id="searchResult">
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <img src="img/tips.svg" style="vertical-align: middle;" onmouseover="tipDiv.style.display = 'inline-flex';" onmouseout="tipDiv.style.display = 'none';">
-                        <div class="tipDiv" id="tipDiv">
-                            <div class='tipLeft'></div>
-                            <div class="tipRight">
-                                <ul class="zcool-xiaowei-regular">
-                                    <li>下面标签代表前端网站导航并保持其显示顺序</li>
-                                    <li>可通过拖拽调整标签位置,在之后新生成的网页中生效</li>
-                                    <li>标签可以删除,在之后新生成的网页中生效</li>
-                                    <li>通过左侧搜索主题,可以把主题添加为标签</li>
-                                    <li>新生成的标签插入最后位置</li>
+            </ul>
+        </nav>
+    </header>
+</div>
+<div id='content'>
+    <section>
+        <!-- 搜索条件-->
+        <search>
+            <form>
+                <div class="functionDiv">
+                    <div class="searchDiv" id='searchDiv'>
+                        <input id="searchInput" class="searchInput" type="text" placeholder="输入主题名,并添加标签"
+                               oninput="changePulldown(this.value);">
+                        <div class="pulldownDiv" id="pulldownDiv">
+                            <div class='pulldownDivTipTop'></div>
+                            <div class="pulldownDivTipBody">
+                                <ul class="zcool-xiaowei-regular" id="searchResult">
                                 </ul>
                             </div>
                         </div>
                     </div>
-                </form>
-            </search>
-            <div class="divContent" id="divContent">
-                <div class="buttonDiv"> Java <button type="button" class="delButton">[X]</button></div>
-                <div class="buttonDiv">Spring <button type="button" class="delButton">[X]</button></div>
-                <div class="buttonDiv">javascript <button type="button" class="delButton">[X]</button></div>
-                <div class="buttonDiv">Tomcat <button type="button" class="delButton">[X]</button></div>
-                <div class="buttonDiv">springboot<button type="button" class="delButton">[X]</button></div>
-                <div class="buttonDiv">css <button type="button" class="delButton">[X]</button></div>
-                <div class="buttonDiv">html <button type="button" class="delButton">[X]</button></div>
-                <div class="buttonDiv">Hibernate <button type="button" class="delButton">[X]</button></div>
-                <div class="buttonDiv">kubernetes<button type="button" class="delButton">[X]</button></div>
-                <div class="buttonDiv">vue.js <button type="button" class="delButton">[X]</button></div>
-                <div class="buttonDiv">React.js <button type="button" class="delButton">[X]</button></div>
+                    <img src="img/tips.svg" style="vertical-align: middle;"
+                         onmouseover="tipDiv.style.display = 'inline-flex';"
+                         onmouseout="tipDiv.style.display = 'none';">
+                    <div class="tipDiv" id="tipDiv">
+                        <div class='tipLeft'></div>
+                        <div class="tipRight">
+                            <ul class="zcool-xiaowei-regular">
+                                <li>下面标签代表前端网站导航并保持其显示顺序</li>
+                                <li>可通过拖拽调整标签位置,在之后新生成的网页中生效</li>
+                                <li>标签可以删除,在之后新生成的网页中生效</li>
+                                <li>通过左侧搜索主题,可以把主题添加为标签</li>
+                                <li>新生成的标签插入最后位置</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </search>
+        <div class="divContent" id="divContent">
+            <div class="buttonDiv"> Java
+                <button type="button" class="delButton">[X]</button>
             </div>
-        </section>
-        <!--提示框-->
-        <div class="publicConfirmTip" id="publicConfirmTip" onclick="if(event.target==publicConfirmTip) publicConfirmTip.style.display = 'none'">
-            <div class="publicConfirmTipContent" id="publicConfirmTipContent">
-                <div class="publicConfirmTipHeader">
-                    <span class="publicConfirmCloseTip" onclick="publicConfirmTip.style.display='none'">&times;</span>
-                </div>
-                <div class="publicConfirmTipBody">
-                    <p><span class="publicConfirmTooltip" id="publicConfirmTooltip"></span></p>
-                </div>
-                <div class="publicConfirmTipFooter">
-                    <button class="publicConfirmTipButton" id="publicConfirmTipButtonCancel">取消</button>
-                    <button class="publicConfirmTipButton" id="publicConfirmTipButtonConfirm">确定</button>
-                </div>
+            <div class="buttonDiv">Spring
+                <button type="button" class="delButton">[X]</button>
+            </div>
+            <div class="buttonDiv">javascript
+                <button type="button" class="delButton">[X]</button>
+            </div>
+            <div class="buttonDiv">Tomcat
+                <button type="button" class="delButton">[X]</button>
+            </div>
+            <div class="buttonDiv">springboot
+                <button type="button" class="delButton">[X]</button>
+            </div>
+            <div class="buttonDiv">css
+                <button type="button" class="delButton">[X]</button>
+            </div>
+            <div class="buttonDiv">html
+                <button type="button" class="delButton">[X]</button>
+            </div>
+            <div class="buttonDiv">Hibernate
+                <button type="button" class="delButton">[X]</button>
+            </div>
+            <div class="buttonDiv">kubernetes
+                <button type="button" class="delButton">[X]</button>
+            </div>
+            <div class="buttonDiv">vue.js
+                <button type="button" class="delButton">[X]</button>
+            </div>
+            <div class="buttonDiv">React.js
+                <button type="button" class="delButton">[X]</button>
             </div>
         </div>
-        <ul id="serverData" style="display: none;">
-            <li>Java<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>Spring<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>Javascript<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>Tomcat<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>Vue.js<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>Kubernetes<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>Mybatis<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>hibernate<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>React.js<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>SpringBoot<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>Html<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>Css<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>xXX<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>YYY<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>ZZZ<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>Tomcat<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>Vue.js<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>Kubernetes<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>Mybatis<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>hibernate<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>React.js<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>SpringBoot<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>Html<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-            <li>Css<button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button></li>
-        </ul>
-        <script type="text/javascript">
+    </section>
+    <!--提示框-->
+    <div class="publicConfirmTip" id="publicConfirmTip"
+         onclick="if(event.target==publicConfirmTip) publicConfirmTip.style.display = 'none'">
+        <div class="publicConfirmTipContent" id="publicConfirmTipContent">
+            <div class="publicConfirmTipHeader">
+                <span class="publicConfirmCloseTip" onclick="publicConfirmTip.style.display='none'">&times;</span>
+            </div>
+            <div class="publicConfirmTipBody">
+                <p><span class="publicConfirmTooltip" id="publicConfirmTooltip"></span></p>
+            </div>
+            <div class="publicConfirmTipFooter">
+                <button class="publicConfirmTipButton" id="publicConfirmTipButtonCancel">取消</button>
+                <button class="publicConfirmTipButton" id="publicConfirmTipButtonConfirm">确定</button>
+            </div>
+        </div>
+    </div>
+    <ul id="serverData" style="display: none;">
+        <li>Java
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>Spring
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>Javascript
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>Tomcat
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>Vue.js
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>Kubernetes
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>Mybatis
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>hibernate
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>React.js
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>SpringBoot
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>Html
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>Css
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>xXX
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>YYY
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>ZZZ
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>Tomcat
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>Vue.js
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>Kubernetes
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>Mybatis
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>hibernate
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>React.js
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>SpringBoot
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>Html
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+        <li>Css
+            <button type="button" class="pulldownButton" onclick="addLabel(this)">添加</button>
+        </li>
+    </ul>
+    <script type="text/javascript">
         //输入框变化,改变下拉框信息
         let decorator = debounce(changePulldownInfo, 500);
+
         function changePulldown(searchKey) {
             if (searchKey) {
                 decorator(searchKey);
@@ -194,6 +270,7 @@
                 clearPulldownInfo();
             }
         }
+
         function changePulldownInfo(searchKey) { //改变下拉框
             //查询服务器,根据请求结果改编searchResult
             if (searchResult.children.length > 0) { //先归位,----------待清除
@@ -201,9 +278,10 @@
             }
             showPulldownInfo();
         }
+
         //清除下拉内容
         function clearPulldownInfo() {
-            Array.from(searchResult.children).forEach(function(item) {
+            Array.from(searchResult.children).forEach(function (item) {
                 if (item.tagName == 'LI') {
                     serverData.append(item)
                 }
@@ -211,6 +289,7 @@
             searchResult.innerHTML = null;
             pulldownDiv.style.display = "none";
         }
+
         //显示下拉内容
         function showPulldownInfo() {
             //再添加
@@ -225,12 +304,13 @@
         }
 
         //下拉提示框,鼠标单击文档其它地方,会隐藏
-        document.addEventListener("click", function(e) {
+        document.addEventListener("click", function (e) {
             if (!e.target.closest('.pulldownDiv') && pulldownDiv.style.display == "block") {
                 Array.from(searchResult.children).forEach(item => serverData.append(item)); //----------待清除
                 pulldownDiv.style.display = "none";
             }
         });
+
         //下拉框按钮单击,添加标签
         function addLabel(elem) {
             let value = elem.parentNode.firstChild.nodeValue.trim();
@@ -244,7 +324,7 @@
             //添加标签
             let div = document.createElement('div');
             div.className = 'buttonDiv';
-            div.innerHTML = value+'<button type="button" class="delButton">[X]</button>';
+            div.innerHTML = value + '<button type="button" class="delButton">[X]</button>';
             divContent.append(div);
             bindFunction(div);
             alert("添加[" + value + "]成功");
@@ -257,17 +337,19 @@
             2 拖拽时遇到可放置区域(class=buttonDiv)时,后面增加样式(.drippable),离开时(.drippable消失)
             3 鼠标松开时,拖拽元素放置到(class=buttonDiv)元素后面.
         */
-        Array.from(document.body.querySelectorAll('.buttonDiv')).forEach(label=>bindFunction(label));
-        function bindFunction(label){
+        Array.from(document.body.querySelectorAll('.buttonDiv')).forEach(label => bindFunction(label));
+
+        function bindFunction(label) {
             label.onmousedown = buttonDivDrag;
-            label.oncontextmenu = e=>false;
+            label.oncontextmenu = e => false;
             label.querySelector('.delButton').onclick = e => showPublicConfirm(e, "确认删除标签?");
         }
 
         function buttonDivDrag(e) {
-            if(e.target.className=='buttonDiv')
+            if (e.target.className == 'buttonDiv')
                 drag(e);
         }
+
         let currentDroppable; //是否有元素移动
 
         function drag(e) {
@@ -294,6 +376,7 @@
                 elem.style.top = pageY - shiftY + 'px';
                 movedPx += Math.abs(pageY - startPageY); //累计移动
             }
+
             //移动中的位置判断以及处理函数,e是注册监听器的第一个参数
             function onMouseMove(e) {
                 moveTo(e.pageX, e.pageY);
@@ -330,7 +413,7 @@
             //注册鼠标移动监听函数,一般在document上注册,防止移动过快时事件丢失
             document.addEventListener("mousemove", onMouseMove);
             //注册松开鼠标事件
-            elem.onmouseup = function(e) {
+            elem.onmouseup = function (e) {
                 document.removeEventListener('mousemove', onMouseMove);
 
                 //在目标元素后插入移动元素,没有移动或者按下和松开鼠标小于200ms则视为无效移动
@@ -342,7 +425,7 @@
                 //去除鼠标释放事件
                 elem.onmouseup = null;
                 //清空当前可放置变量
-                if(currentDroppable){
+                if (currentDroppable) {
                     currentDroppable.classList.remove('droppable');
                     currentDroppable = null;
                 }
@@ -350,15 +433,17 @@
             //取消浏览器默认拖拽行为
             elem.ondragstart = () => false;
         }
+
         //进入放置拽元素时处理
         function enterDroppable(elem) {
             currentDroppable.classList.add('droppable');
         }
+
         //离开可放置元素时处理
         function leaveDroppable(elem) {
             currentDroppable.classList.remove('droppable');
         }
-        </script>
+    </script>
 </body>
 
 </html>

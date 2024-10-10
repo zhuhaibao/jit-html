@@ -245,7 +245,6 @@ body {
 /*弹出modal-通用窗口-end*/
 
 
-
 /*弹出的google搜索框---start*/
 .modalBody {
     font-size: 13px;
@@ -320,7 +319,7 @@ body {
     height: 450px;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
     background-color: #FDFCFC;
-/*    transition: .5s allow-discrete;*/
+    /*    transition: .5s allow-discrete;*/
 }
 
 #searchResultDiv a {
@@ -348,10 +347,10 @@ body {
 /*搜索结果的样式---end*/
 
 /*标题树漂浮按钮*/
-.treeBar{
+.treeBar {
     display: none;
     position: absolute;
-    z-index: 2;/*盖过左按钮*/
+    z-index: 2; /*盖过左按钮*/
     height: 35px;
     width: 35px;
     font-size: 25px;

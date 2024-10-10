@@ -1,1 +1,21 @@
-<svg version="1.1" viewBox="0.0 0.0 100.0 100.0" fill="none" stroke="none" stroke-linecap="square" stroke-miterlimit="10" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><clipPath id="p.0"><path d="m0 0l100.0 0l0 100.0l-100.0 0l0 -100.0z" clip-rule="nonzero"/></clipPath><g clip-path="url(#p.0)"><path fill="#ffffff" fill-opacity="0.0" d="m0 0l100.0 0l0 100.0l-100.0 0z" fill-rule="evenodd"/><path fill="#ffffff" d="m5.545932 10.217848l9.385827 0l0 -6.905512l9.385826 13.811024l-9.385826 13.811024l0 -6.905512l-9.385827 0z" fill-rule="evenodd"/><path stroke="#000000" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="butt" d="m5.545932 10.217848l9.385827 0l0 -6.905512l9.385826 13.811024l-9.385826 13.811024l0 -6.905512l-9.385827 0z" fill-rule="evenodd"/><path fill="#ffffff" d="m5.538058 71.2336l9.385826 -13.811024l0 6.905514l9.385827 0l0 13.81102l-9.385827 0l0 6.90551z" fill-rule="evenodd"/><path stroke="#000000" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="butt" d="m5.538058 71.2336l9.385826 -13.811024l0 6.905514l9.385827 0l0 13.81102l-9.385827 0l0 6.90551z" fill-rule="evenodd"/></g></svg>
+<svg version="1.1" viewBox="0.0 0.0 100.0 100.0" fill="none" stroke="none" stroke-linecap="square"
+     stroke-miterlimit="10" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+    <clipPath id="p.0">
+        <path d="m0 0l100.0 0l0 100.0l-100.0 0l0 -100.0z" clip-rule="nonzero"/>
+    </clipPath>
+    <g clip-path="url(#p.0)">
+        <path fill="#ffffff" fill-opacity="0.0" d="m0 0l100.0 0l0 100.0l-100.0 0z" fill-rule="evenodd"/>
+        <path fill="#ffffff"
+              d="m5.545932 10.217848l9.385827 0l0 -6.905512l9.385826 13.811024l-9.385826 13.811024l0 -6.905512l-9.385827 0z"
+              fill-rule="evenodd"/>
+        <path stroke="#000000" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="butt"
+              d="m5.545932 10.217848l9.385827 0l0 -6.905512l9.385826 13.811024l-9.385826 13.811024l0 -6.905512l-9.385827 0z"
+              fill-rule="evenodd"/>
+        <path fill="#ffffff"
+              d="m5.538058 71.2336l9.385826 -13.811024l0 6.905514l9.385827 0l0 13.81102l-9.385827 0l0 6.90551z"
+              fill-rule="evenodd"/>
+        <path stroke="#000000" stroke-width="1.0" stroke-linejoin="round" stroke-linecap="butt"
+              d="m5.538058 71.2336l9.385826 -13.811024l0 6.905514l9.385827 0l0 13.81102l-9.385827 0l0 6.90551z"
+              fill-rule="evenodd"/>
+    </g>
+</svg>

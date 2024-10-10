@@ -1,8 +1,8 @@
 <svg width="70" height="30" xmlns="http://www.w3.org/2000/svg">
- <g id="Layer_1">
-  <title>Layer 1</title>
-  <ellipse stroke="#000" ry="10" rx="34.5" id="svg_3" cy="15" cx="35" fill="none"/>
-  <ellipse stroke="#000" ry="6.97674" rx="7.96154" id="svg_5" cy="15" cx="35" fill="none"/>
-  <line stroke="#000" id="svg_6" y2="20.34884" x2="29.825" y1="9.65116" x1="40.175" fill="none"/>
- </g>
+    <g id="Layer_1">
+        <title>Layer 1</title>
+        <ellipse stroke="#000" ry="10" rx="34.5" id="svg_3" cy="15" cx="35" fill="none"/>
+        <ellipse stroke="#000" ry="6.97674" rx="7.96154" id="svg_5" cy="15" cx="35" fill="none"/>
+        <line stroke="#000" id="svg_6" y2="20.34884" x2="29.825" y1="9.65116" x1="40.175" fill="none"/>
+    </g>
 </svg>

@@ -21,230 +21,246 @@
     <link rel="stylesheet" href="css/subject-article.css">
     <title>主题-文章树列表</title>
     <style type="text/css">
-    .articleMain {
-        display: flex;
-        flex-direction: row;
-        width: 80%;
-        min-height: calc(100vh - 100px);
-        box-sizing: border-box;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 10px;
-    }
+        .articleMain {
+            display: flex;
+            flex-direction: row;
+            width: 80%;
+            min-height: calc(100vh - 100px);
+            box-sizing: border-box;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+        }
 
-    .articleNav {
-        padding: 40px 10px;
-        width: 20%;
-        background-color: white;
-        box-shadow: -5px 5px 10px 3px rgba(0, 0, 0, 0.2);
-    }
+        .articleNav {
+            padding: 40px 10px;
+            width: 20%;
+            background-color: white;
+            box-shadow: -5px 5px 10px 3px rgba(0, 0, 0, 0.2);
+        }
 
-    .articleNav ul {
-        padding: 0;
-        margin: 0;
-        list-style: none;
-    }
+        .articleNav ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
 
-    #titleTree ul {
-        position: relative;
-        margin-left: 5px
-    }
+        #titleTree ul {
+            position: relative;
+            margin-left: 5px
+        }
 
-    #titleTree ul:before {
-        content: "";
-        height: 100%;
-        position: absolute;
-        border-left: 1px dotted darkgrey;
+        #titleTree ul:before {
+            content: "";
+            height: 100%;
+            position: absolute;
+            border-left: 1px dotted darkgrey;
 
-    }
+        }
 
-    #titleTree ul li {
-        padding: 10px 1em;
-        position: relative;
+        #titleTree ul li {
+            padding: 10px 1em;
+            position: relative;
 
-    }
+        }
 
-    #titleTree ul li:before {
-        content: "";
-        position: absolute;
-        top: 1em;
-        left: 0px;
-        display: block;
-        border-top: 1px dotted darkgrey;
-        width: 15px;
-    }
+        #titleTree ul li:before {
+            content: "";
+            position: absolute;
+            top: 1em;
+            left: 0px;
+            display: block;
+            border-top: 1px dotted darkgrey;
+            width: 15px;
+        }
 
-    .draggable {
-        display: inline-block;
-        padding: 5px;
-        background-color: #f6f6f6;
-        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.18);
-    }
+        .draggable {
+            display: inline-block;
+            padding: 5px;
+            background-color: #f6f6f6;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.18);
+        }
 
-    .draggable:hover {
-        background-color: #afafaf;
-        cursor: -webkit-grab;
-        cursor: grab;
-        font-weight: bold;
-        font-style: italic;
-        padding: 5px;
-    }
+        .draggable:hover {
+            background-color: #afafaf;
+            cursor: -webkit-grab;
+            cursor: grab;
+            font-weight: bold;
+            font-style: italic;
+            padding: 5px;
+        }
 
-    .selected {
-        background-color: #afafaf;
-        font-weight: bold;
-        font-style: italic;
-        padding: 5px;
-    }
+        .selected {
+            background-color: #afafaf;
+            font-weight: bold;
+            font-style: italic;
+            padding: 5px;
+        }
 
-    .droppable {
-        border-bottom: 3px solid #5DB85D;
-    }
+        .droppable {
+            border-bottom: 3px solid #5DB85D;
+        }
 
-    .articleEdit {
-        padding: 40px 20px;
-        width: 80%;
-        background-color: white;
-        margin-left: 5px;
-        box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.2);
-    }
+        .articleEdit {
+            padding: 40px 20px;
+            width: 80%;
+            background-color: white;
+            margin-left: 5px;
+            box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.2);
+        }
 
-    /*创建一个的div样式,这个样式会跟随者鼠标移动;它仅仅模拟li的形状,方便鼠标移动时的提示信息,div内容是选中的li的内容;*/
-    .fakeLi {
-        position: absolute;
-        display: none;
-        height: 20px;
-        overflow: auto;
-        padding: 5px 10px;
-        border: 1px solid #999999;
-        background-color: white;
-        cursor: -webkit-grab;
-        cursor: grab;
-    }
+        /*创建一个的div样式,这个样式会跟随者鼠标移动;它仅仅模拟li的形状,方便鼠标移动时的提示信息,div内容是选中的li的内容;*/
+        .fakeLi {
+            position: absolute;
+            display: none;
+            height: 20px;
+            overflow: auto;
+            padding: 5px 10px;
+            border: 1px solid #999999;
+            background-color: white;
+            cursor: -webkit-grab;
+            cursor: grab;
+        }
 
-    /*编辑标题节点时的输入框样式*/
-    .editButton {
-        width: 100%;
-        padding: 10px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        border: none;
-        outline: medium;
-        background-color: transparent;
-        font-size: 16px;
-        font-style: italic;
-        border-bottom: 1px solid green;
-    }
+        /*编辑标题节点时的输入框样式*/
+        .editButton {
+            width: 100%;
+            padding: 10px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            border: none;
+            outline: medium;
+            background-color: transparent;
+            font-size: 16px;
+            font-style: italic;
+            border-bottom: 1px solid green;
+        }
 
-    /*右键下拉编辑菜单-----start*/
-    .contextmenuDiv {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        z-index: 100;
-        left: 5px;
-        top: 45px;
-    }
+        /*右键下拉编辑菜单-----start*/
+        .contextmenuDiv {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            z-index: 100;
+            left: 5px;
+            top: 45px;
+        }
 
-    .contextmenuTop {
-        border-top: none;
-        border-right: 180px solid transparent;
-        border-bottom: 20px solid palevioletred;
-        border-left: 20px solid transparent;
-    }
+        .contextmenuTop {
+            border-top: none;
+            border-right: 180px solid transparent;
+            border-bottom: 20px solid palevioletred;
+            border-left: 20px solid transparent;
+        }
 
-    .contextmenuBody {
-        width: 200px;
-        max-height: 600px;
-        background-color: #efefef;
-        box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
-        overflow: auto;
-    }
+        .contextmenuBody {
+            width: 200px;
+            max-height: 600px;
+            background-color: #efefef;
+            box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+            overflow: auto;
+        }
 
-    .contextmenuBody ul {
-        padding: 0px;
-        margin: 0px;
-    }
+        .contextmenuBody ul {
+            padding: 0px;
+            margin: 0px;
+        }
 
-    .contextmenuBody ul li {
-        list-style: none;
-        padding: 10px 15px;
-    }
+        .contextmenuBody ul li {
+            list-style: none;
+            padding: 10px 15px;
+        }
 
-    .contextmenuBody ul li:hover {
-        background-color: #999999;
-    }
+        .contextmenuBody ul li:hover {
+            background-color: #999999;
+        }
 
-    /*右键下拉编辑菜单-----end*/
+        /*右键下拉编辑菜单-----end*/
     </style>
 </head>
 
 <body>
-    <div class="sticky">
-        <header>
-            <nav>
-                <ul class="banner">
-                    <li><img src="img/logo.svg" class="logo"></li>
-                    <li class="bannerTitle"><a style="color: #03AA6D; font-weight: bold;" href="subject.html">主题管理</a></li>
-                    <li class="bannerTitle"><a href="articles.html">文章管理</a></li>
-                    <li class="bannerTitle"><a href="navigation.html">导航管理</a></li>
-                    <ul class="innerBanner">
-                        <li>朱海保</li>
-                        <li><a href="login.html">退出</a></li>
-                    </ul>
+<div class="sticky">
+    <header>
+        <nav>
+            <ul class="banner">
+                <li><img src="img/logo.svg" class="logo"></li>
+                <li class="bannerTitle"><a style="color: #03AA6D; font-weight: bold;" href="subject.html">主题管理</a>
+                </li>
+                <li class="bannerTitle"><a href="articles.html">文章管理</a></li>
+                <li class="bannerTitle"><a href="navigation.html">导航管理</a></li>
+                <ul class="innerBanner">
+                    <li>朱海保</li>
+                    <li><a href="login.html">退出</a></li>
                 </ul>
-            </nav>
-        </header>
-    </div>
-    <div class="articleMain">
-        <div class="articleNav">
-            <ul id="titleTree">
-                <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">java基本知识</span>
-                    <ul>
-                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">数据类型int</span></li>
-                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">数据类型string的复杂应用以及特殊作用</span></li>
-                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">数据类型while</span></li>
-                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">数据类型for循环</span></li>
-                    </ul>
-                </li>
-                <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">其它</span>
-                    <ul>
-                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">111</span></li>
-                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">222</span></li>
-                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">333</span></li>
-                    </ul>
-                </li>
-                <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">java继承</span>
-                    <ul>
-                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">子类</span></li>
-                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">访问权限</span></li>
-                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">构造方法</span></li>
-                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">final类</span></li>
-                    </ul>
-                </li>
-                <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">java接口</span>
-                    <ul>
-                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">接口定义</span></li>
-                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">接口与继承</span></li>
-                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">接口默认方法</span></li>
-                    </ul>
-                </li>
-                <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">java Enum</span>
-                    <ul>
-                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">Enum定义</span></li>
-                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">Enum属性与方法</span></li>
-                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">EnumMap</span></li>
-                        <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">EnumSet</span></li>
-                    </ul>
-                </li>
-                <li><span class="draggable" onmousedown="titleLiDrag(event)">集合</span></li>
             </ul>
-        </div>
-        <div class="articleEdit">
-            <div id='editArea'>
+        </nav>
+    </header>
+</div>
+<div class="articleMain">
+    <div class="articleNav">
+        <ul id="titleTree">
+            <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">java基本知识</span>
+                <ul>
+                    <li data-article-info='111'><span class="draggable"
+                                                      onmousedown="titleLiDrag(event)">数据类型int</span></li>
+                    <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">数据类型string的复杂应用以及特殊作用</span>
+                    </li>
+                    <li data-article-info='111'><span class="draggable"
+                                                      onmousedown="titleLiDrag(event)">数据类型while</span></li>
+                    <li data-article-info='111'><span class="draggable"
+                                                      onmousedown="titleLiDrag(event)">数据类型for循环</span></li>
+                </ul>
+            </li>
+            <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">其它</span>
+                <ul>
+                    <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">111</span></li>
+                    <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">222</span></li>
+                    <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">333</span></li>
+                </ul>
+            </li>
+            <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">java继承</span>
+                <ul>
+                    <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">子类</span>
+                    </li>
+                    <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">访问权限</span>
+                    </li>
+                    <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">构造方法</span>
+                    </li>
+                    <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">final类</span>
+                    </li>
+                </ul>
+            </li>
+            <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">java接口</span>
+                <ul>
+                    <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">接口定义</span>
+                    </li>
+                    <li data-article-info='111'><span class="draggable"
+                                                      onmousedown="titleLiDrag(event)">接口与继承</span></li>
+                    <li data-article-info='111'><span class="draggable"
+                                                      onmousedown="titleLiDrag(event)">接口默认方法</span></li>
+                </ul>
+            </li>
+            <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">java Enum</span>
+                <ul>
+                    <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">Enum定义</span>
+                    </li>
+                    <li data-article-info='111'><span class="draggable"
+                                                      onmousedown="titleLiDrag(event)">Enum属性与方法</span></li>
+                    <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">EnumMap</span>
+                    </li>
+                    <li data-article-info='111'><span class="draggable" onmousedown="titleLiDrag(event)">EnumSet</span>
+                    </li>
+                </ul>
+            </li>
+            <li><span class="draggable" onmousedown="titleLiDrag(event)">集合</span></li>
+        </ul>
+    </div>
+    <div class="articleEdit">
+        <div id='editArea'>
                 <textarea id="editor">
                     <h1>Itaque nostrum est-quod nostrum dico, a<img src="http://localhost:8081/backend/img/test/pexels-kei-scampa-4507967.jpeg" alt="" width="293" style="float: right;" height="521">rtis est-ad ea principia, quae accepimus.</h1>
 
@@ -312,40 +328,41 @@
     <dd>Respondeat totidem verbis.</dd>
 </dl>
                 </textarea>
-            </div>
-            <div style="text-align: center; margin-top: 10px;">
-                <a class="doButton" style="display: inline-block;" onclick="alert('保存文章')">保存</a>
-                <a class="doButton" style="display: inline-block;margin-left: 100px;" href='article-view.html'>预览</a>
-            </div>
         </div>
-        <!--隐藏的下拉菜单-->
-        <div class="contextmenuDiv" id="contextmenuDiv" style="display: none;">
-            <div class='contextmenuTop'></div>
-            <div class="contextmenuBody">
-                <ul class="zcool-xiaowei-regular">
-                    <li id="delArticle" onclick="delArticle()">删除</li>
-                    <li id="updateArticleTitle" onclick="updateArticleTitle()">编辑标题</li>
-                    <li id="addArticle" onclick="addArticle()">添加子节点</li>
-                    <li id="addAncesterArticle" onclick="addAncesterArticle(1)">添加顶级节点</li>
-                </ul>
-            </div>
-        </div>
-        <!--隐藏的下拉菜单2-->
-        <div class="contextmenuDiv" style="display: none;" id="contextmenuDiv2">
-            <div class='contextmenuTop'></div>
-            <div class="contextmenuBody">
-                <ul class="zcool-xiaowei-regular">
-                    <li id="addAncesterArticle" onclick="addAncesterArticle(2)">添加顶级节点</li>
-                </ul>
-            </div>
+        <div style="text-align: center; margin-top: 10px;">
+            <a class="doButton" style="display: inline-block;" onclick="alert('保存文章')">保存</a>
+            <a class="doButton" style="display: inline-block;margin-left: 100px;" href='article-view.html'>预览</a>
         </div>
     </div>
-    <div class="fakeLi" id="fakeLi"></div>
-    <script type="text/javascript">
+    <!--隐藏的下拉菜单-->
+    <div class="contextmenuDiv" id="contextmenuDiv" style="display: none;">
+        <div class='contextmenuTop'></div>
+        <div class="contextmenuBody">
+            <ul class="zcool-xiaowei-regular">
+                <li id="delArticle" onclick="delArticle()">删除</li>
+                <li id="updateArticleTitle" onclick="updateArticleTitle()">编辑标题</li>
+                <li id="addArticle" onclick="addArticle()">添加子节点</li>
+                <li id="addAncesterArticle" onclick="addAncesterArticle(1)">添加顶级节点</li>
+            </ul>
+        </div>
+    </div>
+    <!--隐藏的下拉菜单2-->
+    <div class="contextmenuDiv" style="display: none;" id="contextmenuDiv2">
+        <div class='contextmenuTop'></div>
+        <div class="contextmenuBody">
+            <ul class="zcool-xiaowei-regular">
+                <li id="addAncesterArticle" onclick="addAncesterArticle(2)">添加顶级节点</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="fakeLi" id="fakeLi"></div>
+<script type="text/javascript">
     /*加载editor*/
     let editorObj = loadJoditEditor("#editor");
 
     let saved = false;
+
     //编辑文章标题
     function updateArticleTitle() {
         contextmenuDiv.style.display = 'none';
@@ -362,7 +379,7 @@
         elemLi.firstElementChild.replaceWith(input);
         elemLi.firstElementChild.focus();
         //失去焦点时要提示保存
-        elemLi.firstElementChild.onblur = function(e) {
+        elemLi.firstElementChild.onblur = function (e) {
             save(e);
         }
 
@@ -379,6 +396,7 @@
             elemLi.prepend(oldSpan); //改为span
         }
     }
+
     //删除文章
     function delArticle() {
         contextmenuDiv.style.display = 'none';
@@ -387,6 +405,7 @@
             if (del) contextmenuDiv.selectedLi.remove();
         }
     }
+
     //添加新文章
     function addArticle() {
         contextmenuDiv.style.display = 'none'; //关闭右键菜单
@@ -400,13 +419,14 @@
         let input = elem.querySelector('input');
         let li = input.parentElement;
         input.focus(); //立刻获取焦点
-        input.onblur = function(e) { //失去焦点时,立刻处理
+        input.onblur = function (e) { //失去焦点时,立刻处理
             let newValue = input.value ? input.value : '新建节点';
             li.innerHTML = `<span class="draggable" onmousedown="titleLiDrag(event)">${newValue}</span>`;
             addListerForLiSpan(li.firstElementChild);
         }
 
     }
+
     //添加最外层节点
     function addAncesterArticle(type) {
         if (type == 1) contextmenuDiv.style.display = 'none';
@@ -419,7 +439,7 @@
 
         let input = li.firstElementChild;
         input.focus();
-        input.onblur = function(e) {
+        input.onblur = function (e) {
             let newValue = this.value ? this.value : '新建节点';
             li.innerHTML = `<span class="draggable" onmousedown="titleLiDrag(event)">${newValue}</span>`;
             addListerForLiSpan(li.firstElementChild);
@@ -427,7 +447,7 @@
     }
 
     /*为li下的所有span绑定单击事件*/
-    Array.from(document.body.querySelectorAll('.draggable')).forEach(function(elem) {
+    Array.from(document.body.querySelectorAll('.draggable')).forEach(function (elem) {
         addListerForLiSpan(elem);
     });
     //注册整个treeUl委托处理所有右键事件
@@ -443,7 +463,7 @@
     });
 
     //注册单击窗口事件
-    document.body.addEventListener('click', function(e) {
+    document.body.addEventListener('click', function (e) {
         //隐藏右键菜单
         if (e.target.closest('#contextmenuDiv') != contextmenuDiv && contextmenuDiv.style.display == 'flex') {
             contextmenuDiv.style.display = 'none';
@@ -456,7 +476,7 @@
     /*手工为li的span元素添加所有监听器*/
     function addListerForLiSpan(liSpan) {
         liSpan.addEventListener('click', selectedLi);
-        liSpan.addEventListener('contextmenu', function(e) {
+        liSpan.addEventListener('contextmenu', function (e) {
             e.preventDefault(); //阻止默认事件
             contextmenuDiv.style.left = e.pageX + 'px';
             contextmenuDiv.style.top = e.pageY + 'px';
@@ -481,6 +501,7 @@
             currentLiSpan = span;
         }
     }
+
     /*span单击事件----------end-----------*/
 
 
@@ -516,12 +537,14 @@
         //先移动一下,防止位置突然跳跃
         fakeLi.style.left = e.pageX + 5 + 'px';
         fakeLi.style.top = e.pageY + 5 + 'px';
+
         //移动函数
         function moveTo(pageX, pageY) {
             fakeLi.style.left = pageX - shiftOffset + 'px';
             fakeLi.style.top = pageY - shiftOffset + 'px';
             movedPx += Math.abs(pageY - startPageY); //累计移动
         }
+
         //移动中的位置判断以及处理函数,e是注册监听器的第一个参数
         function onMouseMove(e) {
 
@@ -556,6 +579,7 @@
                 }
             }
         }
+
         //鼠标释放
         function onMouseUp(e) {
             document.removeEventListener('mousemove', onMouseMove);
@@ -588,15 +612,17 @@
         //取消浏览器默认拖拽行为
         elem.ondragstart = () => false;
     }
+
     //进入放置拽元素时处理
     function enterDroppable(elem) {
         currentDroppable.querySelector('span').classList.add('droppable');
     }
+
     //离开可放置元素时处理
     function leaveDroppable(elem) {
         currentDroppable.querySelector('span').classList.remove('droppable');
     }
-    </script>
+</script>
 </body>
 
 </html>

@@ -21,12 +21,13 @@
 }
 
 .buttonDiv:hover {
-    cursor:-webkit-grab;
+    cursor: -webkit-grab;
     cursor: grab;
     box-shadow: 0px 10px 15px rgb(0, 0, 0, 0.5);
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
 }
+
 /*拖动时可放置元素的样式*/
 .buttonDiv.droppable {
     box-shadow: 5px 0px #5DE85D;
@@ -44,9 +45,10 @@
     top: 0px;
     right: 0px;
 }
+
 /*方便后面排列图像 */
 .searchDiv {
-    display: inline-block; 
+    display: inline-block;
 }
 
 /*右侧提示div*/
@@ -70,10 +72,12 @@
     background-color: #efefef;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
 }
-.tipRight ul{
+
+.tipRight ul {
     padding: 0px;
     margin: 0px;
 }
+
 .tipRight ul li {
     list-style: none;
     padding: 10px 20px;

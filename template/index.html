@@ -6,251 +6,264 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>网站首页</title>
     <script src="./js/base.js"></script>
-    <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/base.css"/>
+    <link rel="stylesheet" href="./css/index.css"/>
 
 </head>
 
 <body>
-    <div class="topDiv">
-        <div class="topBar">
-            <div class="logoDiv">
-                <a href="index.html">
-                    <img src="img/logo.svg">
-                </a>
-            </div>
-            <div class="searchDiv">
-                <input type="text" name="searchKey" id="searchInput" placeholder="搜索文章..." onfocus="searchByKey(event)" oninput="searchByKey(event)" onblur="onFocusLose(event);">
-                <img class="searchImg" src="img/searchicon.svg" onclick="gSearchByKey(event)">
-            </div>
-            <div class="userInfoDiv">
-                <span>朱海保</span>
-            </div>
+<div class="topDiv">
+    <div class="topBar">
+        <div class="logoDiv">
+            <a href="index.html">
+                <img src="img/logo.svg">
+            </a>
         </div>
-        <div class="navBar">
-            <div class="arrow" id="leftArrow"></div>
-            <i id="treeBar" class="fa fa-bars treeBar" onclick="treeBarFun();"></i>
-            <nav>
-                <ul>
-                    <!--第一个文章标签,固定显示-->
-                    <li id="articleLabel"><a href="article.html">点滴文章</a></li>
-                    <li><a href="articles.html">javascript</a></li>
-                    <li><a href="articles.html">springboot</a></li>
-                    <li><a href="articles.html">vue.js</a></li>
-                    <li><a href="articles.html">kubernetes</a></li>
-                    <li><a href="articles.html">css</a></li>
-                    <li><a href="articles.html">html</a></li>
-                    <li><a href="articles.html">kafka</a></li>
-                    <li><a href="articles.html">rabbitmq</a></li>
-                    <li class="selected"><a href="articles.html">javascript</a></li>
-                    <li><a href="articles.html">springboot</a></li>
-                    <li><a href="articles.html">vue.js</a></li>
-                    <li><a href="articles.html">kubernetes</a></li>
-                    <li><a href="articles.html">css</a></li>
-                    <li><a href="articles.html">html</a></li>
-                    <li><a href="articles.html">kafka</a></li>
-                    <li><a href="articles.html">rabbitmq</a></li>
-                    <li><a href="articles.html">rabbitmq</a></li>
-                    <li><a href="articles.html">rabbitmq1</a></li>
-                    <li><a href="articles.html">rabbitmq2</a></li>
-                    <li><a href="articles.html">rabbitmq3</a></li>
-                    <li><a href="articles.html">rabbitmq4</a></li>
-                    <li><a href="articles.html">rabbitmq5</a></li>
-                    <li><a href="articles.html">rabbitmq6</a></li>
-                    <li><a href="articles.html">rabbitmq7</a></li>
-                    <li><a href="articles.html">rabbitmq8</a></li>
-                    <li><a href="articles.html">rabbitmq9</a></li>
-                </ul>
-            </nav>
-            <div class="arrow" id="rightArrow"></div>
+        <div class="searchDiv">
+            <input type="text" name="searchKey" id="searchInput" placeholder="搜索文章..." onfocus="searchByKey(event)"
+                   oninput="searchByKey(event)" onblur="onFocusLose(event);">
+            <img class="searchImg" src="img/searchicon.svg" onclick="gSearchByKey(event)">
+        </div>
+        <div class="userInfoDiv">
+            <span>朱海保</span>
         </div>
     </div>
-    <div class="mainDiv">
-        <div class="subjectArea">
-            <div class="subjectHeader">
-                <a href="articles.html">
-                    <img src="img/subject-logo1.svg">
-                    <h3>springboot学习路线</h3>
-                    <p>Microservices Quickly deliver production‑grade features with independently evolvable microservices.</p>
-                </a>
-            </div>
-            <div class="subjectHeader">
-                <a href="articles.html">
-                    <img src="img/subject-logo2.svg">
-                    <h3>springboot学习路线</h3>
-                    <p>Microservices Quickly deliver production‑grade features with independently evolvable microservices.</p>
-                </a>
-            </div>
-            <div class="subjectHeader">
-                <a href="articles.html">
-                    <img src="img/subject-logo3.svg">
-                    <h3>springboot学习路线</h3>
-                    <p>Microservices Quickly deliver production‑grade features with independently evolvable microservices.</p>
-                </a>
-            </div>
-            <div class="subjectHeader">
-                <a href="articles.html">
-                    <img src="img/subject-logo4.svg">
-                    <h3>springboot学习路线</h3>
-                    <p>Microservices Quickly deliver production‑grade features with independently evolvable microservices.</p>
-                </a>
-            </div>
-            <div class="subjectHeader">
-                <a href="articles.html">
-                    <img src="img/subject-logo5.svg">
-                    <h3>springboot学习路线</h3>
-                    <p>Microservices Quickly deliver production‑grade features with independently evolvable microservices.</p>
-                </a>
-            </div>
-            <div class="subjectHeader">
-                <a href="articles.html">
-                    <img src="img/subject-logo1.svg">
-                    <h3>springboot学习路线</h3>
-                    <p>Microservices Quickly deliver production‑grade features with independently evolvable microservices.</p>
-                </a>
-            </div>
-            <div class="subjectHeader">
-                <a href="articles.html">
-                    <img src="img/subject-logo1.svg">
-                    <h3>springboot学习路线</h3>
-                    <p>Microservices Quickly deliver production‑grade features with independently evolvable microservices.</p>
-                </a>
-            </div>
-            <div class="subjectHeader">
-                <a href="articles.html">
-                    <img src="img/subject-logo1.svg">
-                    <h3>springboot学习路线</h3>
-                    <p>Microservices Quickly deliver production‑grade features with independently evolvable microservices.</p>
-                </a>
-            </div>
-            <div class="subjectHeader">
-                <a href="articles.html">
-                    <img src="img/subject-logo1.svg">
-                    <h3>springboot学习路线</h3>
-                    <p>Microservices Quickly deliver production‑grade features with independently evolvable microservices.</p>
-                </a>
-            </div>
+    <div class="navBar">
+        <div class="arrow" id="leftArrow"></div>
+        <i id="treeBar" class="fa fa-bars treeBar" onclick="treeBarFun();"></i>
+        <nav>
+            <ul>
+                <!--第一个文章标签,固定显示-->
+                <li id="articleLabel"><a href="article.html">点滴文章</a></li>
+                <li><a href="articles.html">javascript</a></li>
+                <li><a href="articles.html">springboot</a></li>
+                <li><a href="articles.html">vue.js</a></li>
+                <li><a href="articles.html">kubernetes</a></li>
+                <li><a href="articles.html">css</a></li>
+                <li><a href="articles.html">html</a></li>
+                <li><a href="articles.html">kafka</a></li>
+                <li><a href="articles.html">rabbitmq</a></li>
+                <li class="selected"><a href="articles.html">javascript</a></li>
+                <li><a href="articles.html">springboot</a></li>
+                <li><a href="articles.html">vue.js</a></li>
+                <li><a href="articles.html">kubernetes</a></li>
+                <li><a href="articles.html">css</a></li>
+                <li><a href="articles.html">html</a></li>
+                <li><a href="articles.html">kafka</a></li>
+                <li><a href="articles.html">rabbitmq</a></li>
+                <li><a href="articles.html">rabbitmq</a></li>
+                <li><a href="articles.html">rabbitmq1</a></li>
+                <li><a href="articles.html">rabbitmq2</a></li>
+                <li><a href="articles.html">rabbitmq3</a></li>
+                <li><a href="articles.html">rabbitmq4</a></li>
+                <li><a href="articles.html">rabbitmq5</a></li>
+                <li><a href="articles.html">rabbitmq6</a></li>
+                <li><a href="articles.html">rabbitmq7</a></li>
+                <li><a href="articles.html">rabbitmq8</a></li>
+                <li><a href="articles.html">rabbitmq9</a></li>
+            </ul>
+        </nav>
+        <div class="arrow" id="rightArrow"></div>
+    </div>
+</div>
+<div class="mainDiv">
+    <div class="subjectArea">
+        <div class="subjectHeader">
+            <a href="articles.html">
+                <img src="img/subject-logo1.svg">
+                <h3>springboot学习路线</h3>
+                <p>Microservices Quickly deliver production‑grade features with independently evolvable
+                    microservices.</p>
+            </a>
         </div>
-        <div class="articleArea">
-            <h4>最近发表的文章</h4>
-            <div class="aricleList">
-                <div class="articleHeader">
-                    <h4>2024年9月24日</h4>
-                    <span><a href="article.html">html+css+javascript+angulur+node.js搭建一个完整的网站</a></span>
-                </div>
-                <div class="articleHeader">
-                    <h4>2024年9月24日</h4>
-                    <span><a href="article.html">html+css+javascript+angulur+node.js搭建一个完整的网站</a></span>
-                </div>
-                <div class="articleHeader">
-                    <h4>2024年9月24日</h4>
-                    <span><a href="article.html">html+css+javascript+angulur+node.js搭建一个完整的网站</a></span>
-                </div>
-                <div class="articleHeader">
-                    <h4>2024年9月24日</h4>
-                    <span><a href="article.html">html+css+javascript+angulur+node.js搭建一个完整的网站</a></span>
-                </div>
-            </div>
+        <div class="subjectHeader">
+            <a href="articles.html">
+                <img src="img/subject-logo2.svg">
+                <h3>springboot学习路线</h3>
+                <p>Microservices Quickly deliver production‑grade features with independently evolvable
+                    microservices.</p>
+            </a>
+        </div>
+        <div class="subjectHeader">
+            <a href="articles.html">
+                <img src="img/subject-logo3.svg">
+                <h3>springboot学习路线</h3>
+                <p>Microservices Quickly deliver production‑grade features with independently evolvable
+                    microservices.</p>
+            </a>
+        </div>
+        <div class="subjectHeader">
+            <a href="articles.html">
+                <img src="img/subject-logo4.svg">
+                <h3>springboot学习路线</h3>
+                <p>Microservices Quickly deliver production‑grade features with independently evolvable
+                    microservices.</p>
+            </a>
+        </div>
+        <div class="subjectHeader">
+            <a href="articles.html">
+                <img src="img/subject-logo5.svg">
+                <h3>springboot学习路线</h3>
+                <p>Microservices Quickly deliver production‑grade features with independently evolvable
+                    microservices.</p>
+            </a>
+        </div>
+        <div class="subjectHeader">
+            <a href="articles.html">
+                <img src="img/subject-logo1.svg">
+                <h3>springboot学习路线</h3>
+                <p>Microservices Quickly deliver production‑grade features with independently evolvable
+                    microservices.</p>
+            </a>
+        </div>
+        <div class="subjectHeader">
+            <a href="articles.html">
+                <img src="img/subject-logo1.svg">
+                <h3>springboot学习路线</h3>
+                <p>Microservices Quickly deliver production‑grade features with independently evolvable
+                    microservices.</p>
+            </a>
+        </div>
+        <div class="subjectHeader">
+            <a href="articles.html">
+                <img src="img/subject-logo1.svg">
+                <h3>springboot学习路线</h3>
+                <p>Microservices Quickly deliver production‑grade features with independently evolvable
+                    microservices.</p>
+            </a>
+        </div>
+        <div class="subjectHeader">
+            <a href="articles.html">
+                <img src="img/subject-logo1.svg">
+                <h3>springboot学习路线</h3>
+                <p>Microservices Quickly deliver production‑grade features with independently evolvable
+                    microservices.</p>
+            </a>
         </div>
     </div>
-    <!--显示搜索结果-->
-    <div id="searchResultDiv">
-        <div id="searchResult">
-            <a class="resultItem" href="index.html"><span class="keyword">Java</span>专题</a>
-            <a class="resultItem" href="article.html"><span class="keyword">Java</span>Script专题</a>
-            <a class="resultItem" href="article.html"><span class="keyword">Java</span>SpringBoot专题</a>
-            <a class="resultItem" href="article.html"><span class="keyword">Java</span>RabbitMq专题</a>
-            <a class="resultItem" href="article.html"><span class="keyword">java</span>动态代理文章</a>
-            <a class="resultItem" href="article.html"><span class="keyword">java</span>设计模式专题</a>
-            <a class="resultItem" href="article.html">新版<span class="keyword">java22</span>特性专题</a>
-            <a class="resultItem" href="article.html">模块化<span class="keyword">java</span>开发专题</a>
-        </div>
-        <hr>
-        <a class="siteSearch" href="javascript:void(0);" onclick="gSearchByKey(event)">站内搜索</a>
-    </div>
-    <!--模态窗口div,显示google结果-->
-    <div class="modal" id="modalResult" onclick="if(event.target==modalResult)modalResult.style.display='none'">
-        <div class="modalContent">
-            <div class="modalBody">
-                <div class="googleSearchTitle">
-                    <span class="close" id='close' onclick="modalResult.style.display='none'">&times;</span>
-                    <span class="resultAnalysis">About 18,900 results (0.20 seconds)</span><br>
-                    <hr class="hrsplit">
-                </div>
-                <div id="googleResult">
-                    <div class="gItem">
-                        <a class="gTitle" href="#"><b>Java</b>专题</a><br>
-                        <span class="gPath">www.jit.com › java</span><br>
-                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Javas dfasf sasdf asfsdf adf sa fsasd fa now.</span>
-                    </div>
-                    <div class="gItem">
-                        <a class="gTitle" href="#"><b>Java</b>专题</a><br>
-                        <span class="gPath">www.jit.com › java</span><br>
-                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
-                    </div>
-                    <div class="gItem">
-                        <a class="gTitle" href="#"><b>Java</b>专题</a><br>
-                        <span class="gPath">www.jit.com › java</span><br>
-                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
-                    </div>
-                    <div class="gItem">
-                        <a class="gTitle" href="#"><b>Java专题</b></a><br>
-                        <span class="gPath">www.jit.com › java</span><br>
-                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
-                    </div>
-                    <div class="gItem">
-                        <a class="gTitle" href="#"><b>Java专题</b></a><br>
-                        <span class="gPath">www.jit.com › java</span><br>
-                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
-                    </div>
-                    <div class="gItem">
-                        <a class="gTitle" href="#"><b>Java专题</b></a><br>
-                        <span class="gPath">www.jit.com › java</span><br>
-                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
-                    </div>
-                    <div class="gItem">
-                        <a class="gTitle" href="#"><b>Java专题</b></a><br>
-                        <span class="gPath">www.jit.com › java</span><br>
-                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
-                    </div>
-                    <div class="gItem">
-                        <a class="gTitle" href="#"><b>Java专题</b></a><br>
-                        <span class="gPath">www.jit.com › java</span><br>
-                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
-                    </div>
-                    <div class="gItem">
-                        <a class="gTitle" href="#"><b>Java专题</b></a><br>
-                        <span class="gPath">www.jit.com › java</span><br>
-                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
-                    </div>
-                    <div class="gItem">
-                        <a class="gTitle" href="#"><b>Java专题</b></a><br>
-                        <span class="gPath">www.jit.com › java</span><br>
-                        <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
-                    </div>
-                </div>
-                <div class="gPage">
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">6</a>
-                    <a href="#">7</a>
-                    <a href="#">8</a>
-                    <a href="#">9</a>
-                    <a href="#">10</a>
-                </div>
-                <div class="gBottom">
-                    <a class="togoogle" href="https://www.google.com/search?client=ms-google-coop&q=java&cx=c5f6ccbd4ce9405a8"><img src='./img/searchlogo.svg'>Search for <b>java</b> on Google</a>
-                    <a class="togoogle-enhance" href="https://programmablesearchengine.google.com/about/"><img src="./img/enhanceByGoogle.png"></a>
-                </div>
+    <div class="articleArea">
+        <h4>最近发表的文章</h4>
+        <div class="aricleList">
+            <div class="articleHeader">
+                <h4>2024年9月24日</h4>
+                <span><a href="article.html">html+css+javascript+angulur+node.js搭建一个完整的网站</a></span>
+            </div>
+            <div class="articleHeader">
+                <h4>2024年9月24日</h4>
+                <span><a href="article.html">html+css+javascript+angulur+node.js搭建一个完整的网站</a></span>
+            </div>
+            <div class="articleHeader">
+                <h4>2024年9月24日</h4>
+                <span><a href="article.html">html+css+javascript+angulur+node.js搭建一个完整的网站</a></span>
+            </div>
+            <div class="articleHeader">
+                <h4>2024年9月24日</h4>
+                <span><a href="article.html">html+css+javascript+angulur+node.js搭建一个完整的网站</a></span>
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        showNavBar(); //显示导航条
-    </script>
+</div>
+<!--显示搜索结果-->
+<div id="searchResultDiv">
+    <div id="searchResult">
+        <a class="resultItem" href="index.html"><span class="keyword">Java</span>专题</a>
+        <a class="resultItem" href="article.html"><span class="keyword">Java</span>Script专题</a>
+        <a class="resultItem" href="article.html"><span class="keyword">Java</span>SpringBoot专题</a>
+        <a class="resultItem" href="article.html"><span class="keyword">Java</span>RabbitMq专题</a>
+        <a class="resultItem" href="article.html"><span class="keyword">java</span>动态代理文章</a>
+        <a class="resultItem" href="article.html"><span class="keyword">java</span>设计模式专题</a>
+        <a class="resultItem" href="article.html">新版<span class="keyword">java22</span>特性专题</a>
+        <a class="resultItem" href="article.html">模块化<span class="keyword">java</span>开发专题</a>
+    </div>
+    <hr>
+    <a class="siteSearch" href="javascript:void(0);" onclick="gSearchByKey(event)">站内搜索</a>
+</div>
+<!--模态窗口div,显示google结果-->
+<div class="modal" id="modalResult" onclick="if(event.target==modalResult)modalResult.style.display='none'">
+    <div class="modalContent">
+        <div class="modalBody">
+            <div class="googleSearchTitle">
+                <span class="close" id='close' onclick="modalResult.style.display='none'">&times;</span>
+                <span class="resultAnalysis">About 18,900 results (0.20 seconds)</span><br>
+                <hr class="hrsplit">
+            </div>
+            <div id="googleResult">
+                <div class="gItem">
+                    <a class="gTitle" href="#"><b>Java</b>专题</a><br>
+                    <span class="gPath">www.jit.com › java</span><br>
+                    <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Javas dfasf sasdf asfsdf adf sa fsasd fa now.</span>
+                </div>
+                <div class="gItem">
+                    <a class="gTitle" href="#"><b>Java</b>专题</a><br>
+                    <span class="gPath">www.jit.com › java</span><br>
+                    <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
+                </div>
+                <div class="gItem">
+                    <a class="gTitle" href="#"><b>Java</b>专题</a><br>
+                    <span class="gPath">www.jit.com › java</span><br>
+                    <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
+                </div>
+                <div class="gItem">
+                    <a class="gTitle" href="#"><b>Java专题</b></a><br>
+                    <span class="gPath">www.jit.com › java</span><br>
+                    <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
+                </div>
+                <div class="gItem">
+                    <a class="gTitle" href="#"><b>Java专题</b></a><br>
+                    <span class="gPath">www.jit.com › java</span><br>
+                    <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
+                </div>
+                <div class="gItem">
+                    <a class="gTitle" href="#"><b>Java专题</b></a><br>
+                    <span class="gPath">www.jit.com › java</span><br>
+                    <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
+                </div>
+                <div class="gItem">
+                    <a class="gTitle" href="#"><b>Java专题</b></a><br>
+                    <span class="gPath">www.jit.com › java</span><br>
+                    <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
+                </div>
+                <div class="gItem">
+                    <a class="gTitle" href="#"><b>Java专题</b></a><br>
+                    <span class="gPath">www.jit.com › java</span><br>
+                    <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
+                </div>
+                <div class="gItem">
+                    <a class="gTitle" href="#"><b>Java专题</b></a><br>
+                    <span class="gPath">www.jit.com › java</span><br>
+                    <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
+                </div>
+                <div class="gItem">
+                    <a class="gTitle" href="#"><b>Java专题</b></a><br>
+                    <span class="gPath">www.jit.com › java</span><br>
+                    <span class="gInfo">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more. Start learning Java now.</span>
+                </div>
+            </div>
+            <div class="gPage">
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">7</a>
+                <a href="#">8</a>
+                <a href="#">9</a>
+                <a href="#">10</a>
+            </div>
+            <div class="gBottom">
+                <a class="togoogle"
+                   href="https://www.google.com/search?client=ms-google-coop&q=java&cx=c5f6ccbd4ce9405a8"><img
+                        src='./img/searchlogo.svg'>Search for <b>java</b> on Google</a>
+                <a class="togoogle-enhance" href="https://programmablesearchengine.google.com/about/"><img
+                        src="./img/enhanceByGoogle.png"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    showNavBar(); //显示导航条
+</script>
 </body>
 
 </html>
