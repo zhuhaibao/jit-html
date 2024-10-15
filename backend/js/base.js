@@ -93,7 +93,6 @@ function loadJoditEditor(selector) {
         pageParams.total = parseInt(document.getElementById("total").value); //数据量
         pageParams.pageSize = parseInt(document.getElementById("pageSize").value); //单页数据量
         pageParams.pageBarNum = parseInt(document.getElementById("pageBarNum").value);
-
         //开始渲染
         renderPage();
     }
@@ -154,7 +153,7 @@ function loadJoditEditor(selector) {
         pageIndex.innerHTML = "";
         for (let i = pageParams.startPage; i <= pageParams.endPage; i++) {
             if (i != pageParams.toPage) {
-                pageIndex.innerHTML += "<a onclick='clickPage(this)'>" + i + "</a>";
+                pageIndex.innerHTML += "<a onclick='renderClickPage(this)'>" + i + "</a>";
                 //绑定单击事件
             } else {
                 pageIndex.innerHTML += "<a class='pageSelected'>" + i + "</a>";
@@ -171,7 +170,7 @@ function loadJoditEditor(selector) {
         pageParams.currentPage < totalPage ? pageNext.style.display = 'block' : pageNext.style.display = 'none';
     }
     //分页单击事件
-    function clickPage(clickElem) {
+    function renderClickPage(clickElem) {
         let toPage;
         if (clickElem.id == "pagePrev") {
             pageParams.toPage = pageParams.currentPage - 1;
@@ -188,11 +187,11 @@ function loadJoditEditor(selector) {
     //分页大小调整函数
     function setPageSize(event) {
         if(event.key=='Enter'){
-            pageParams.pageSize=parseInt(event.target.value);
-            renderPage();
+            document.getElementById("pageSize").value=event.target.value;
+            initPageByPresentParams();
         }
     }
-    //导航现实的页码数调整
+    //导航显示的页码数调整
     function setPageBarNum(event){
         if(event.key=='Enter'){
             let totalPage = Math.ceil(pageParams.total / pageParams.pageSize);
@@ -223,4 +222,19 @@ function loadJoditEditor(selector) {
         totalPage.value=Math.ceil(total.value/pageSize.value);
         currentPage.value = pageParams.currentPage;
         pageBarNum.value = pageParams.pageBarNum;
+    }
+
+    //渲染错误form表单验证错误信息
+    function renderFormFeildErrors(form,errors) {
+        for(let key in errors){
+            if(form.elements[key]){
+                form.elements[key].insertAdjacentHTML('afterend',`<span class='feildErr'>${errors[key]}</span>`);
+            }
+        }
+    }
+    //清除form表单验证错误信息
+    function clearFormFeildErrors(form) {
+        Array.from(form.querySelectorAll(".feildErr")).forEach(e=>{
+            e.remove();
+        });
     }
