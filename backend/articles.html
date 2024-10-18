@@ -70,8 +70,15 @@
         padding: 5px 10px;
     }
 
-    .modalBody ul li:hover {
-        background-color: #efefef;
+    /*有span孩子的li元素*/
+    .modalBody li>span:hover {
+        background-color: #BEBFC3;
+        font-style: italic;
+        cursor: pointer;
+    }
+    /*没有span的li元素*/
+    .modalBody li:not(:has(>span)):hover {
+        background-color: #BEBFC3;
         font-style: italic;
         cursor: pointer;
     }
@@ -85,6 +92,15 @@
         left: 10px;
         top: 10px;
     }
+    /*弹出的文章节点列表的样式*/
+    .hiddenUl{
+        display: none;
+    }
+    .folder{
+        font-size: 18px;
+        margin-left: 5px;
+    }
+
     </style>
 </head>
 
@@ -273,48 +289,30 @@
             </div>
             <div class="modalBody">
                 <ul>
-                    <li>java基本知识</li>
-                    <ul>
-                        <li>数据类型int</li>
-                        <li>数据类型string</li>
-                        <li>数据类型while</li>
-                        <li>数据类型for循环</li>
-                    </ul>
-                    <li>java继承</li>
-                    <ul>
-                        <li>子类</li>
-                        <li>访问权限</li>
-                        <li>构造方法</li>
-                        <li>final类</li>
-                    </ul>
-                    <li>java接口</li>
-                    <ul>
-                        <li>接口定义</li>
-                        <li>接口与继承</li>
-                        <li>接口默认方法</li>
-                    </ul>
-                    <li>java Enum</li>
-                    <ul>
-                        <li>Enum定义</li>
-                        <li>Enum属性与方法</li>
-                        <li>EnumMap</li>
-                        <li>EnumSet</li>
-                    </ul>
-                    <li>java线程</li>
-                    <ul>
-                        <li>线程Thread</li>
-                        <li>Runnable</li>
-                        <li>线程池</li>
-                        <li>资源竞争</li>
-                    </ul>
-                    <li>数组</li>
-                    <li>动态代理</li>
-                    <ul>
-                        <li>InocationHanlder</li>
-                        <li>Proxy.newInstance</li>
-                        <li>应用</li>
-                    </ul>
-                    <li>集合</li>
+                    <li><span>java基本知识<i class="fa fa-folder folder"></i></span>
+                        <ul class="hiddenUl">
+                            <li>数据类型int</li>
+                            <li>数据类型string</li>
+                            <li>数据类型while</li>
+                            <li><span>数据类型for循环<i class="fa fa-folder folder"></i></span>
+                                <ul class="hiddenUl">
+                                    <li>线程Thread</li>
+                                    <li>Runnable</li>
+                                    <li>线程池</li>
+                                    <li>资源竞争</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><span>java继承<i class="fa fa-folder folder"></i></span>
+                        <ul class="hiddenUl">
+                            <li>子类</li>
+                            <li>访问权限</li>
+                            <li>构造方法</li>
+                            <li>final类</li>
+                        </ul>
+                    </li>
+                    
                 </ul>
             </div>
             <div class="modalFooter">
@@ -364,20 +362,41 @@
     }
     //为modal弹出框绑定函数
     let selectLi = null;
-    Array.from(document.body.querySelectorAll('.modalBody li')).forEach(function(item) {
-        item.onclick = function() {
-            if (selectLi != item) {
-                if (selectLi) selectLi.style.background = 'none';
-                selectLi = item;
-                item.style.background = '#A6A7AB';
+    document.body.querySelector(".modalBody").addEventListener('click', function(e) {
+        let li = e.target.closest("li");
+        if (!li) return;
+        if (li.firstElementChild) {
+            //切换上下箭头
+            let elemI = li.firstElementChild.querySelector("i");
+            if(elemI.classList.contains('fa-folder')){
+                elemI.classList.remove("fa-folder");
+                elemI.classList.add("fa-folder-open");
+            }else{
+                elemI.classList.remove("fa-folder-open");
+                elemI.classList.add("fa-folder");
             }
-        };
+            //隐藏子元素ul
+            let subUl = li.querySelector("ul");
+            subUl.classList.toggle("hiddenUl");
+            //设置背景色
+            li.firstElementChild.style.background = "#A6A7AB";
+        } else {
+            li.style.background = "#A6A7AB";
+        }
+        if (selectLi && li !== selectLi) {
+            if (selectLi.firstElementChild){
+                selectLi.firstElementChild.removeAttribute("style");
+            }else{
+                selectLi.removeAttribute("style");
+            }
+        }
+        selectLi = li;
     });
 
     //保存位置
     function updatePosition() {
         if (selectLi) {
-            alert(`修改了当前的位置:` + selectLi.innerText);
+            alert(`文章插入节点:<<${selectLi.innerText}>>之后`);
             selectLi.style.background = 'none';
             selectLi = null;
 
@@ -402,7 +421,7 @@
     const pageParams = {
         //初始化分页参数
         currentPage: 1, //当前页,默认页面加载时为0
-        pageBarNum:10, //当前页导航最多显示多少页码,默认
+        pageBarNum: 10, //当前页导航最多显示多少页码,默认
         startPage: 1, //当前页导航第一页,默认页面加载时为0
         endPage: 5, //当前页导航最后一页,默认
         toPage: 1, //要跳转的页,默认
@@ -410,6 +429,7 @@
         pageSize: pageSizeNumber, //单页数据量
     };
     initPage();
+
     function initPage() {
         renderPage();
     }
